@@ -3,8 +3,6 @@ var ctx = canvas.getContext("2d");
 const squareSize = 40;
 var ms = 500;
 
-var tetrominoJ;
-
 document.addEventListener("keydown", function(event){
     startGame(event.key);
 });
@@ -26,7 +24,7 @@ function startGame(key){
 function updateGameBoard(){
 
     drawSquaredGameBoard();
-    tetrominoesSlowFall(tetrominoJ0);
+    tetrominoesSlowFall(tetrominoes);
 }
 
 var gameBoardSquared = [];
@@ -62,9 +60,9 @@ function SimpleBlock (squareColor, x, y){
     }
 }
 
-//Declaration of variables of a [4x4] tetromino array without the cells, that are never used (like cell[3])
+//Declaration of variables, of a [4x4] tetromino array. Excluding the cells, that are never used (like tetro3)
 var tetro0, tetro1, tetro2, tetro4, tetro5, tetro6, tetro7, tetro8, tetro9, tetro10, tetro11, tetro13, tetro14;
-var tetrominoJ0;
+var tetrominoes;
 
 function makeNewTestBlock(){
     tetro0 = new SimpleBlock("blue", 160, 0);
@@ -81,8 +79,26 @@ function makeNewTestBlock(){
     tetro13 = new SimpleBlock("blue", 200, 120);
     tetro14 = new SimpleBlock("blue", 240, 120);
 
-    tetrominoJ0 = [tetro1, tetro5, tetro8, tetro9];
-    return tetrominoJ0;
+    var i = Math.floor(Math.random() * 4);
+
+    var tetrominoJ0 = [tetro1, tetro5, tetro8, tetro9];
+    var tetrominoJ1 = [tetro4, tetro5, tetro6, tetro10];
+    var tetrominoJ2 = [tetro1, tetro2, tetro5, tetro9];
+    var tetrominoJ3 = [tetro0, tetro4, tetro5, tetro6];
+
+    var tetrominoJ = [tetrominoJ0, tetrominoJ1, tetrominoJ2, tetrominoJ3];
+
+    var tetrominoS0 = [tetro0, tetro4, tetro5, tetro9];
+    var tetrominoS1 = [tetro5, tetro6, tetro8, tetro9];
+    var tetrominoS2 = [tetro1, tetro5, tetro6, tetro10];
+    var tetrominoS3 = [tetro1, tetro2, tetro4, tetro5];
+
+    var tetrominoS = [tetrominoS0, tetrominoS1, tetrominoS2, tetrominoS3];
+
+    var tetrominoesArr = [tetrominoJ[i], tetrominoS[i]];
+    var x = Math.floor(Math.random() * 2);
+    tetrominoes = tetrominoesArr[x];
+    return tetrominoes;
 }
 
 function tetrominoesSlowFall(myArr){
