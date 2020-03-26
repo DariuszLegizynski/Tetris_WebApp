@@ -14,11 +14,25 @@ function startGame(key){
         makeNewTestBlock();
         setInterval(updateGameBoard, ms);  //1000/ms(=20) = 50 fps
     }
+
     else if (key==="ArrowUp")
         //rotate
         return;
+
+    else if (key==="ArrowLeft"){
+        moveTetrominoesLeft(tetrominoes);
+    }
+
+    else if (key==="ArrowRight"){
+        moveTetrominoesRight(tetrominoes);
+    }
+
+    else if (key==="ArrowDown"){
+        return;
+    }
+    
     else
-        console.log("Psst, press 'Enter'");
+        console.log("Psst, press 'Enter' to start");
 }
 
 function updateGameBoard(){
@@ -99,6 +113,14 @@ function makeNewTestBlock(){
     var x = Math.floor(Math.random() * 2);
     tetrominoes = tetrominoesArr[x];
     return tetrominoes;
+}
+
+function moveTetrominoesLeft(myArr){
+    myArr.x -= squareSize;
+}
+
+function moveTetrominoesRight(myArr){
+    myArr.x += squareSize;
 }
 
 function tetrominoesSlowFall(myArr){
