@@ -3,6 +3,15 @@ var ctx = canvas.getContext("2d");
 const squareSize = 40;
 var ms = 500;
 
+var clickButtons = document.querySelectorAll(".click-button");
+
+for (var i = 0; i < clickButtons.length; i++){
+    clickButtons[i].addEventListener("click", function(){
+        moveTetrominoesLeft(tetrominoes);
+        // moveTetrominoesRight(tetrominoes);
+    });
+}
+
 document.addEventListener("keydown", function(event){
     startGame(event.key);
 });
