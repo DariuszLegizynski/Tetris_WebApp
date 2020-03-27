@@ -1,7 +1,9 @@
-var canvas = document.getElementById("gameBoardCanvas");
-var ctx = canvas.getContext("2d");
 const squareSize = 40;
 var ms = 500;
+
+//getting the canvases properties
+var canvas = document.getElementById("gameBoardCanvas");
+var ctx = canvas.getContext("2d");
 
 var clickButtons = document.querySelectorAll(".click-button");
 
@@ -129,66 +131,92 @@ function makeNewTestBlock(){
 function moveTetrominoesLeft(myArr){
     if(myArr.includes(tetro0)){
         tetro0.x -= squareSize;
+        if(tetro0.x < 0)
+            tetro0.x = 0;
         tetro0.updateBlock();
     }
 
     if(myArr.includes(tetro1)){
         tetro1.x -= squareSize;
+        if(tetro1.x < squareSize)
+            tetro1.x = squareSize;
         tetro1.updateBlock();
     }
     
     if(myArr.includes(tetro2)){
         tetro2.x -= squareSize;
+        if(tetro2.x < 2*squareSize)
+            tetro2.x = 2*squareSize;
         tetro2.updateBlock();
     }
     
     if(myArr.includes(tetro4)){
         tetro4.x -= squareSize;
+        if(tetro4.x < 0)
+            tetro4.x = 0;
         tetro4.updateBlock();
     }
 
     if(myArr.includes(tetro5)){
         tetro5.x -= squareSize;
+        if(tetro5.x < squareSize)
+            tetro5.x = squareSize;
         tetro5.updateBlock();
     }
 
     if(myArr.includes(tetro6)){
         tetro6.x -= squareSize;
+        if(tetro6.x < 2*squareSize)
+            tetro6.x = 2*squareSize;
         tetro6.updateBlock();
     }
 
     if(myArr.includes(tetro7)){
         tetro7.x -= squareSize;
+        if(tetro7.x < 3*squareSize)
+            tetro7.x = 3*squareSize;
         tetro7.updateBlock();
     }
 
     if(myArr.includes(tetro8)){
         tetro8.x -= squareSize;
+        if(tetro8.x < 0)
+            tetro8.x = 0;
         tetro8.updateBlock();
     }
 
     if(myArr.includes(tetro9)){
         tetro9.x -= squareSize;
+        if(tetro9.x < squareSize)
+            tetro9.x = squareSize;
         tetro9.updateBlock();
     }
 
     if(myArr.includes(tetro10)){
         tetro10.x -= squareSize;
+        if(tetro10.x < 2*squareSize)
+            tetro10.x = 2*squareSize;
         tetro10.updateBlock();
     }
 
     if(myArr.includes(tetro11)){
         tetro11.x -= squareSize;
+        if(tetro11.x < 3*squareSize)
+            tetro11.x = 3*squareSize;
         tetro11.updateBlock();
     }
 
     if(myArr.includes(tetro13)){
         tetro13.x -= squareSize;
+        if(tetro13.x < squareSize)
+            tetro13.x = squareSize;
         tetro13.updateBlock();
     }
 
     if(myArr.includes(tetro14)){
         tetro14.x -= squareSize;
+        if(tetro14.x < 2*squareSize)
+            tetro14.x = 2*squareSize;
         tetro14.updateBlock();
     }
 }
@@ -196,66 +224,79 @@ function moveTetrominoesLeft(myArr){
 function moveTetrominoesRight(myArr){
     if(myArr.includes(tetro0)){
         tetro0.x += squareSize;
+        tetro0.x = Math.min(Math.max(0, tetro0.x),canvasWidth);
         tetro0.updateBlock();
     }
 
     if(myArr.includes(tetro1)){
         tetro1.x += squareSize;
+        tetro1.x = Math.min(Math.max(0, tetro1.x),canvasWidth);
         tetro1.updateBlock();
     }
     
     if(myArr.includes(tetro2)){
         tetro2.x += squareSize;
+        tetro2.x = Math.min(Math.max(0, tetro2.x),canvasWidth);
         tetro2.updateBlock();
     }
     
     if(myArr.includes(tetro4)){
         tetro4.x += squareSize;
+        tetro4.x = Math.min(Math.max(0, tetro4.x),canvasWidth);
         tetro4.updateBlock();
     }
 
     if(myArr.includes(tetro5)){
         tetro5.x += squareSize;
+        tetro5.x = Math.min(Math.max(0, tetro5.x),canvasWidth);
         tetro5.updateBlock();
     }
 
     if(myArr.includes(tetro6)){
         tetro6.x += squareSize;
+        tetro6.x = Math.min(Math.max(0, tetro6.x),canvasWidth);
         tetro6.updateBlock();
     }
 
     if(myArr.includes(tetro7)){
         tetro7.x += squareSize;
+        tetro7.x = Math.min(Math.max(0, tetro7.x),canvasWidth);
         tetro7.updateBlock();
     }
 
     if(myArr.includes(tetro8)){
         tetro8.x += squareSize;
+        tetro8.x = Math.min(Math.max(0, tetro8.x),canvasWidth);
         tetro8.updateBlock();
     }
 
     if(myArr.includes(tetro9)){
         tetro9.x += squareSize;
+        tetro9.x = Math.min(Math.max(0, tetro9.x),canvasWidth);
         tetro9.updateBlock();
     }
 
     if(myArr.includes(tetro10)){
         tetro10.x += squareSize;
+        tetro10.x = Math.min(Math.max(0, tetro10.x),canvasWidth);
         tetro10.updateBlock();
     }
 
     if(myArr.includes(tetro11)){
         tetro11.x += squareSize;
+        tetro11.x = Math.min(Math.max(0, tetro11.x),canvasWidth);
         tetro11.updateBlock();
     }
 
     if(myArr.includes(tetro13)){
         tetro13.x += squareSize;
+        tetro13.x = Math.min(Math.max(0, tetro13.x),canvasWidth);
         tetro13.updateBlock();
     }
 
     if(myArr.includes(tetro14)){
         tetro14.x += squareSize;
+        tetro14.x = Math.min(Math.max(0, tetro14.x),canvasWidth);
         tetro14.updateBlock();
     }
 }
