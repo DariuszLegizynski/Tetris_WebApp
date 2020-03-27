@@ -7,8 +7,8 @@ var clickButtons = document.querySelectorAll(".click-button");
 
 for (var i = 0; i < clickButtons.length; i++){
     clickButtons[i].addEventListener("click", function(){
-        moveTetrominoesLeft(tetrominoes);
-        // moveTetrominoesRight(tetrominoes);
+        var buttonClickedOn = "Arrow" + this.innerText;
+        startGame(buttonClickedOn);
     });
 }
 
