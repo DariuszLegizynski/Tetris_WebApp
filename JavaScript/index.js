@@ -224,79 +224,92 @@ function moveTetrominoesLeft(myArr){
 function moveTetrominoesRight(myArr){
     if(myArr.includes(tetro0)){
         tetro0.x += squareSize;
-        tetro0.x = Math.min(Math.max(0, tetro0.x),canvasWidth);
+        if(tetro0.x > squareSize * 7)
+            tetro0.x = squareSize * 7;
         tetro0.updateBlock();
     }
 
     if(myArr.includes(tetro1)){
         tetro1.x += squareSize;
-        tetro1.x = Math.min(Math.max(0, tetro1.x),canvasWidth);
+        if(tetro1.x > squareSize * 8)
+            tetro1.x = squareSize * 8;
         tetro1.updateBlock();
     }
     
     if(myArr.includes(tetro2)){
         tetro2.x += squareSize;
-        tetro2.x = Math.min(Math.max(0, tetro2.x),canvasWidth);
+        if(tetro2.x > squareSize * 9)
+            tetro2.x = squareSize * 9;
         tetro2.updateBlock();
     }
     
     if(myArr.includes(tetro4)){
         tetro4.x += squareSize;
-        tetro4.x = Math.min(Math.max(0, tetro4.x),canvasWidth);
+        if(tetro4.x > squareSize * 7)
+            tetro4.x = squareSize * 7;
         tetro4.updateBlock();
     }
 
     if(myArr.includes(tetro5)){
         tetro5.x += squareSize;
-        tetro5.x = Math.min(Math.max(0, tetro5.x),canvasWidth);
+        if(tetro5.x > squareSize * 8)
+            tetro5.x = squareSize * 8;
         tetro5.updateBlock();
     }
 
     if(myArr.includes(tetro6)){
         tetro6.x += squareSize;
-        tetro6.x = Math.min(Math.max(0, tetro6.x),canvasWidth);
+        if(tetro6.x > squareSize * 9)
+            tetro6.x = squareSize * 9;
         tetro6.updateBlock();
     }
 
     if(myArr.includes(tetro7)){
         tetro7.x += squareSize;
-        tetro7.x = Math.min(Math.max(0, tetro7.x),canvasWidth);
+        if(tetro7.x > squareSize * 10)
+            tetro7.x = squareSize * 10;
         tetro7.updateBlock();
     }
 
     if(myArr.includes(tetro8)){
         tetro8.x += squareSize;
-        tetro8.x = Math.min(Math.max(0, tetro8.x),canvasWidth);
+        if(tetro8.x > squareSize * 7)
+            tetro8.x = squareSize * 7;
         tetro8.updateBlock();
     }
 
     if(myArr.includes(tetro9)){
         tetro9.x += squareSize;
-        tetro9.x = Math.min(Math.max(0, tetro9.x),canvasWidth);
+        if(tetro9.x > squareSize * 8)
+            tetro9.x = squareSize * 8;
         tetro9.updateBlock();
     }
 
     if(myArr.includes(tetro10)){
         tetro10.x += squareSize;
-        tetro10.x = Math.min(Math.max(0, tetro10.x),canvasWidth);
+        if(tetro10.x > squareSize * 9)
+            tetro10.x = squareSize * 9;
         tetro10.updateBlock();
     }
 
     if(myArr.includes(tetro11)){
         tetro11.x += squareSize;
-        tetro11.x = Math.min(Math.max(0, tetro11.x),canvasWidth);
+        if(tetro11.x > squareSize * 10)
+            tetro11.x = squareSize * 10;
         tetro11.updateBlock();
     }
 
     if(myArr.includes(tetro13)){
         tetro13.x += squareSize;
-        tetro13.x = Math.min(Math.max(0, tetro13.x),canvasWidth);
+        if(tetro13.x > squareSize * 8)
+            tetro13.x = squareSize * 8;
         tetro13.updateBlock();
     }
 
     if(myArr.includes(tetro14)){
         tetro14.x += squareSize;
-        tetro14.x = Math.min(Math.max(0, tetro14.x),canvasWidth);
+        if(tetro14.x > squareSize * 9)
+            tetro14.x = squareSize * 9;
         tetro14.updateBlock();
     }
 }
@@ -304,66 +317,92 @@ function moveTetrominoesRight(myArr){
 function tetrominoesSlowFall(myArr){
     if(myArr.includes(tetro0)){
         tetro0.y += squareSize;
+        if(tetro0.y > squareSize * 17)
+            tetro0.y = squareSize * 17;
         tetro0.updateBlock();
     }
 
     if(myArr.includes(tetro1)){
         tetro1.y += squareSize;
+        if(tetro1.y > squareSize * 17)
+            tetro1.y = squareSize * 17;
         tetro1.updateBlock();
     }
     
     if(myArr.includes(tetro2)){
         tetro2.y += squareSize;
+        if(tetro2.y > squareSize * 17)
+            tetro2.y = squareSize * 17;
         tetro2.updateBlock();
     }
     
     if(myArr.includes(tetro4)){
         tetro4.y += squareSize;
+        if(tetro4.y > squareSize * 18)
+            tetro4.y = squareSize * 18;
         tetro4.updateBlock();
     }
 
     if(myArr.includes(tetro5)){
         tetro5.y += squareSize;
+        if(tetro5.y > squareSize * 18)
+            tetro5.y = squareSize * 18;
         tetro5.updateBlock();
     }
 
     if(myArr.includes(tetro6)){
         tetro6.y += squareSize;
+        if(tetro6.y > squareSize * 18)
+            tetro6.y = squareSize * 18;
         tetro6.updateBlock();
     }
 
     if(myArr.includes(tetro7)){
         tetro7.y += squareSize;
+        if(tetro7.y > squareSize * 18)
+            tetro7.y = squareSize * 18;
         tetro7.updateBlock();
     }
 
     if(myArr.includes(tetro8)){
         tetro8.y += squareSize;
+        if(tetro8.y > squareSize * 19)
+            tetro8.y = squareSize * 19;
         tetro8.updateBlock();
     }
 
     if(myArr.includes(tetro9)){
         tetro9.y += squareSize;
+        if(tetro9.y > squareSize * 19)
+            tetro9.y = squareSize * 19;
         tetro9.updateBlock();
     }
 
     if(myArr.includes(tetro10)){
         tetro10.y += squareSize;
+        if(tetro10.y > squareSize * 19)
+            tetro10.y = squareSize * 19;
         tetro10.updateBlock();
     }
 
     if(myArr.includes(tetro11)){
         tetro11.y += squareSize;
+        if(tetro11.y > squareSize * 19)
+            tetro11.y = squareSize * 19;
         tetro11.updateBlock();
     }
 
     if(myArr.includes(tetro13)){
         tetro13.y += squareSize;
+        if(tetro13.y > squareSize * 20)
+            tetro13.y = squareSize * 20;
         tetro13.updateBlock();
     }
 
     if(myArr.includes(tetro14)){
         tetro14.y += squareSize;
+        if(tetro14.y > squareSize * 20)
+            tetro14.y = squareSize * 20;
         tetro14.updateBlock();
     }
 }
