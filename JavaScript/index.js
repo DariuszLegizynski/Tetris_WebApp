@@ -135,98 +135,242 @@ function makeNewTestBlock(){
 }
 
 function moveTetrominoesLeft(myArr){
-    if(!myArr.includes(tetro0||tetro4||tetro8)){
-        if(!myArr.includes(tetro1||tetro5||tetro9||tetro13)){
-            if(!myArr.includes(tetro2||tetro6||tetro10||tetro14)){
-                if(tetro7){
-                    tetro7.x -= squareSize;
-                    if(tetro7.x < 0)
-                        tetro7.x = 0;
-                    tetro7.updateBlock();
-                }
-                if(tetro11){
-                    tetro11.x -= squareSize;
-                    if(tetro11.x < 0)
-                        tetro11.x = 0;
-                    tetro11.updateBlock();
-                }
-            }
-            else{
-                if(tetro2){
-                    tetro2.x -= squareSize;
-                    if(tetro2.x < 0)
-                        tetro2.x = 0;
-                    tetro2.updateBlock();
-                }
-                if(tetro6){
-                    tetro6.x -= squareSize;
-                    if(tetro6.x < 0)
-                        tetro6.x = 0;
-                    tetro6.updateBlock();
-                }
-                if(tetro10){
-                    tetro10.x -= squareSize;
-                    if(tetro10.x < 0)
-                        tetro10.x = 0;
-                    tetro10.updateBlock();
-                }
-                if(tetro14){
-                    tetro14.x -= squareSize;
-                    if(tetro14.x < 0)
-                        tetro14.x = 0;
-                    tetro14.updateBlock();
-                }
-            }
-
-        }
-        else{
-            if(tetro1){
-                tetro1.x -= squareSize;
-                if(tetro1.x < 0)
-                    tetro1.x = 0;
-                tetro1.updateBlock();
-            }
-            if(tetro5){
-                tetro5.x -= squareSize;
-                if(tetro5.x < 0)
-                    tetro5.x = 0;
-                tetro5.updateBlock();
-            }
-            if(tetro9){
-                tetro9.x -= squareSize;
-                if(tetro9.x < 0)
-                    tetro9.x = 0;
-                tetro9.updateBlock();
-            }
-            if(tetro13){
-                tetro13.x -= squareSize;
-                if(tetro13.x < 0)
-                    tetro13.x = 0;
-                tetro13.updateBlock();
-            } 
-        }
-
-    }
-    else{
+    if(myArr.includes(tetro0||tetro4||tetro8)){
         if(tetro0){
             tetro0.x -= squareSize;
-            if(tetro0.x < 0)
+            if(tetro0.x <= 0)
                 tetro0.x = 0;
             tetro0.updateBlock();
         }
-        if (tetro4){
+        if(tetro4){
             tetro4.x -= squareSize;
-            if(tetro4.x < 0)
+            if(tetro4.x <= 0)
                 tetro4.x = 0;
             tetro4.updateBlock();
         }
         if(tetro8){
             tetro8.x -= squareSize;
-            if(tetro8.x < 0)
+            if(tetro8.x <= 0)
                 tetro8.x = 0;
             tetro8.updateBlock();
         }
+        if(tetro1){
+            tetro1.x -= squareSize;
+            if(tetro1.x <= squareSize)
+                tetro1.x = squareSize;
+            tetro1.updateBlock();
+        }
+        if(tetro5){
+            tetro5.x -= squareSize;
+            if(tetro5.x <= squareSize)
+                tetro5.x = squareSize;
+            tetro5.updateBlock();
+        }
+        if(tetro9){
+            tetro9.x -= squareSize;
+            if(tetro9.x <= squareSize)
+                tetro9.x = squareSize;
+            tetro9.updateBlock();
+        }
+        if(tetro13){
+            tetro13.x -= squareSize;
+            if(tetro13.x <= squareSize)
+                tetro13.x = squareSize;
+            tetro13.updateBlock();
+        }
+        if(tetro2){
+            tetro2.x -= squareSize;
+            if(tetro2.x <= squareSize*2)
+                tetro2.x = squareSize*2;
+            tetro2.updateBlock();
+        }
+        if(tetro6){
+            tetro6.x -= squareSize;
+            if(tetro6.x <= squareSize*2)
+                tetro6.x = squareSize*2;
+            tetro6.updateBlock();
+        }
+        if(tetro10){
+            tetro10.x -= squareSize;
+            if(tetro10.x <= squareSize*2)
+                tetro10.x = squareSize*2;
+            tetro10.updateBlock();
+        }
+        if(tetro14){
+            tetro14.x -= squareSize;
+            if(tetro14.x <= squareSize*2)
+                tetro14.x = squareSize*2;
+            tetro14.updateBlock();
+        }
+        if(tetro7){
+            tetro7.x -= squareSize;
+            if(tetro7.x <= squareSize*3)
+                tetro7.x = squareSize*3;
+            tetro7.updateBlock();
+        }
+        if(tetro11){
+            tetro11.x -= squareSize;
+            if(tetro11.x <= squareSize*3)
+                tetro11.x = squareSize*3;
+            tetro11.updateBlock();
+        }
     }
+    else{
+        if(tetro1){
+            tetro1.x -= squareSize;
+            if(tetro1.x <= 0)
+                tetro1.x = 0;
+            tetro1.updateBlock();
+        }
+        if(tetro5){
+            tetro5.x -= squareSize;
+            if(tetro5.x <= 0)
+                tetro5.x = 0;
+            tetro5.updateBlock();
+        }
+        if(tetro9){
+            tetro9.x -= squareSize;
+            if(tetro9.x <= 0)
+                tetro9.x = 0;
+            tetro9.updateBlock();
+        }
+        if(tetro13){
+            tetro13.x -= squareSize;
+            if(tetro13.x <= 0)
+                tetro13.x = 0;
+            tetro13.updateBlock();
+        }
+        if(tetro2){
+            tetro2.x -= squareSize;
+            if(tetro2.x <= squareSize)
+                tetro2.x = squareSize;
+            tetro2.updateBlock();
+        }
+        if(tetro6){
+            tetro6.x -= squareSize;
+            if(tetro6.x <= squareSize)
+                tetro6.x = squareSize;
+            tetro6.updateBlock();
+        }
+        if(tetro10){
+            tetro10.x -= squareSize;
+            if(tetro10.x <= squareSize)
+                tetro10.x = squareSize;
+            tetro10.updateBlock();
+        }
+        if(tetro14){
+            tetro14.x -= squareSize;
+            if(tetro14.x <= squareSize)
+                tetro14.x = squareSize;
+            tetro14.updateBlock();
+        }
+        if(tetro7){
+            tetro7.x -= squareSize;
+            if(tetro7.x <= squareSize*2)
+                tetro7.x = squareSize*2;
+            tetro7.updateBlock();
+        }
+        if(tetro11){
+            tetro11.x -= squareSize;
+            if(tetro11.x <= squareSize*2)
+                tetro11.x = squareSize*2;
+            tetro11.updateBlock();
+        }
+    }
+
+
+    // if(!myArr.includes(tetro0||tetro4||tetro8)){
+    //     if(!myArr.includes(tetro1||tetro5||tetro9||tetro13)){
+    //         if(!myArr.includes(tetro2||tetro6||tetro10||tetro14)){
+    //             if(tetro7){
+    //                 tetro7.x -= squareSize;
+    //                 if(tetro7.x < 0)
+    //                     tetro7.x = 0;
+    //                 tetro7.updateBlock();
+    //             }
+    //             if(tetro11){
+    //                 tetro11.x -= squareSize;
+    //                 if(tetro11.x < 0)
+    //                     tetro11.x = 0;
+    //                 tetro11.updateBlock();
+    //             }
+    //         }
+    //         else{
+    //             if(tetro2){
+    //                 tetro2.x -= squareSize;
+    //                 if(tetro2.x < 0)
+    //                     tetro2.x = 0;
+    //                 tetro2.updateBlock();
+    //             }
+    //             if(tetro6){
+    //                 tetro6.x -= squareSize;
+    //                 if(tetro6.x < 0)
+    //                     tetro6.x = 0;
+    //                 tetro6.updateBlock();
+    //             }
+    //             if(tetro10){
+    //                 tetro10.x -= squareSize;
+    //                 if(tetro10.x < 0)
+    //                     tetro10.x = 0;
+    //                 tetro10.updateBlock();
+    //             }
+    //             if(tetro14){
+    //                 tetro14.x -= squareSize;
+    //                 if(tetro14.x < 0)
+    //                     tetro14.x = 0;
+    //                 tetro14.updateBlock();
+    //             }
+    //         }
+
+    //     }
+    //     else{
+    //         if(tetro1){
+    //             tetro1.x -= squareSize;
+    //             if(tetro1.x < 0)
+    //                 tetro1.x = 0;
+    //             tetro1.updateBlock();
+    //         }
+    //         if(tetro5){
+    //             tetro5.x -= squareSize;
+    //             if(tetro5.x < 0)
+    //                 tetro5.x = 0;
+    //             tetro5.updateBlock();
+    //         }
+    //         if(tetro9){
+    //             tetro9.x -= squareSize;
+    //             if(tetro9.x < 0)
+    //                 tetro9.x = 0;
+    //             tetro9.updateBlock();
+    //         }
+    //         if(tetro13){
+    //             tetro13.x -= squareSize;
+    //             if(tetro13.x < 0)
+    //                 tetro13.x = 0;
+    //             tetro13.updateBlock();
+    //         }
+    //     }
+
+    // }
+    // else{
+    //     if(tetro0){
+    //         tetro0.x -= squareSize;
+    //         if(tetro0.x < 0)
+    //             tetro0.x = 0;
+    //         tetro0.updateBlock();
+    //     }
+    //     if (tetro4){
+    //         tetro4.x -= squareSize;
+    //         if(tetro4.x < 0)
+    //             tetro4.x = 0;
+    //         tetro4.updateBlock();
+    //     }
+    //     if(tetro8){
+    //         tetro8.x -= squareSize;
+    //         if(tetro8.x < 0)
+    //             tetro8.x = 0;
+    //         tetro8.updateBlock();
+    //     }
+    // }
 }
 
 function tetrominoesSlowFall(myArr){
