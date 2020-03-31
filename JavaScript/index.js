@@ -347,6 +347,232 @@ function moveTetrominoesLeft(myArr){
     }
 }
 
+function moveTetrominoesRight(myArr){
+    
+    if(!(myArr.includes(tetro7) || myArr.includes(tetro11))){
+        if(!(myArr.includes(tetro2) || myArr.includes(tetro6) || myArr.includes(tetro10) || myArr.includes(tetro14))){
+            if(myArr.includes(tetro1)){
+                tetro1.x += squareSize;
+                if(tetro1.x >= squareSize * 9)
+                    tetro1.x = squareSize * 9;
+                tetro1.updateBlock();
+            }
+        
+            if(myArr.includes(tetro5)){
+                tetro5.x += squareSize;
+                if(tetro5.x >= squareSize * 9)
+                    tetro5.x = squareSize * 9;
+                tetro5.updateBlock();
+            }
+        
+            if(myArr.includes(tetro9)){
+                tetro9.x += squareSize;
+                if(tetro9.x >= squareSize * 9)
+                    tetro9.x = squareSize * 9;
+                tetro9.updateBlock();
+            }
+        
+            if(myArr.includes(tetro13)){
+                tetro13.x += squareSize;
+                if(tetro13.x >= squareSize * 9)
+                    tetro13.x = squareSize * 9;
+                tetro13.updateBlock();
+            }
+            
+            if(myArr.includes(tetro0)){
+                tetro0.x += squareSize;
+                if(tetro0.x >= squareSize * 8)
+                    tetro0.x = squareSize * 8;
+                tetro0.updateBlock();
+            }
+        
+            if(myArr.includes(tetro4)){
+                tetro4.x += squareSize;
+                if(tetro4.x >= squareSize * 8)
+                    tetro4.x = squareSize * 8;
+                tetro4.updateBlock();
+            }
+        
+            if(myArr.includes(tetro8)){
+                tetro8.x += squareSize;
+                if(tetro8.x >= squareSize * 8)
+                    tetro8.x = squareSize * 8;
+                tetro8.updateBlock();
+            }
+        }
+        else{
+            if(myArr.includes(tetro2)){
+                tetro2.x += squareSize;
+                if(tetro2.x >= squareSize * 9)
+                    tetro2.x = squareSize * 9;
+                tetro2.updateBlock();
+            }
+        
+            if(myArr.includes(tetro6)){
+                tetro6.x += squareSize;
+                if(tetro6.x >= squareSize * 9)
+                    tetro6.x = squareSize * 9;
+                tetro6.updateBlock();
+            }
+        
+            if(myArr.includes(tetro10)){
+                tetro10.x += squareSize;
+                if(tetro10.x >= squareSize * 9)
+                    tetro10.x = squareSize * 9;
+                tetro10.updateBlock();
+            }
+        
+            if(myArr.includes(tetro14)){
+                tetro14.x += squareSize;
+                if(tetro14.x >= squareSize * 9)
+                    tetro14.x = squareSize * 9;
+                tetro14.updateBlock();
+            }
+        
+            if(myArr.includes(tetro1)){
+                tetro1.x += squareSize;
+                if(tetro1.x >= squareSize * 8)
+                    tetro1.x = squareSize * 8;
+                tetro1.updateBlock();
+            }
+        
+            if(myArr.includes(tetro5)){
+                tetro5.x += squareSize;
+                if(tetro5.x >= squareSize * 8)
+                    tetro5.x = squareSize * 8;
+                tetro5.updateBlock();
+            }
+        
+            if(myArr.includes(tetro9)){
+                tetro9.x += squareSize;
+                if(tetro9.x >= squareSize * 8)
+                    tetro9.x = squareSize * 8;
+                tetro9.updateBlock();
+            }
+        
+            if(myArr.includes(tetro13)){
+                tetro13.x += squareSize;
+                if(tetro13.x >= squareSize * 8)
+                    tetro13.x = squareSize * 8;
+                tetro13.updateBlock();
+            }
+            
+            if(myArr.includes(tetro0)){
+                tetro0.x += squareSize;
+                if(tetro0.x >= squareSize * 7)
+                    tetro0.x = squareSize * 7;
+                tetro0.updateBlock();
+            }
+        
+            if(myArr.includes(tetro4)){
+                tetro4.x += squareSize;
+                if(tetro4.x >= squareSize * 7)
+                    tetro4.x = squareSize * 7;
+                tetro4.updateBlock();
+            }
+        
+            if(myArr.includes(tetro8)){
+                tetro8.x += squareSize;
+                if(tetro8.x >= squareSize * 7)
+                    tetro8.x = squareSize * 7;
+                tetro8.updateBlock();
+            }
+        }
+    }
+    else{
+        if(myArr.includes(tetro7)){
+            tetro7.x += squareSize;
+            if(tetro7.x >= squareSize * 9)
+                tetro7.x = squareSize * 9;
+            tetro7.updateBlock();
+        }
+    
+        if(myArr.includes(tetro11)){
+            tetro11.x += squareSize;
+            if(tetro11.x >= squareSize * 9)
+                tetro11.x = squareSize * 9;
+            tetro11.updateBlock();
+        }
+    
+        if(myArr.includes(tetro2)){
+            tetro2.x += squareSize;
+            if(tetro2.x >= squareSize * 8)
+                tetro2.x = squareSize * 8;
+            tetro2.updateBlock();
+        }
+    
+        if(myArr.includes(tetro6)){
+            tetro6.x += squareSize;
+            if(tetro6.x >= squareSize * 8)
+                tetro6.x = squareSize * 8;
+            tetro6.updateBlock();
+        }
+    
+        if(myArr.includes(tetro10)){
+            tetro10.x += squareSize;
+            if(tetro10.x >= squareSize * 8)
+                tetro10.x = squareSize * 8;
+            tetro10.updateBlock();
+        }
+    
+        if(myArr.includes(tetro14)){
+            tetro14.x += squareSize;
+            if(tetro14.x >= squareSize * 8)
+                tetro14.x = squareSize * 8;
+            tetro14.updateBlock();
+        }
+    
+        if(myArr.includes(tetro1)){
+            tetro1.x += squareSize;
+            if(tetro1.x >= squareSize * 7)
+                tetro1.x = squareSize * 7;
+            tetro1.updateBlock();
+        }
+    
+        if(myArr.includes(tetro5)){
+            tetro5.x += squareSize;
+            if(tetro5.x >= squareSize * 7)
+                tetro5.x = squareSize * 7;
+            tetro5.updateBlock();
+        }
+    
+        if(myArr.includes(tetro9)){
+            tetro9.x += squareSize;
+            if(tetro9.x >= squareSize * 7)
+                tetro9.x = squareSize * 7;
+            tetro9.updateBlock();
+        }
+    
+        if(myArr.includes(tetro13)){
+            tetro13.x += squareSize;
+            if(tetro13.x >= squareSize * 7)
+                tetro13.x = squareSize * 7;
+            tetro13.updateBlock();
+        }
+        
+        if(myArr.includes(tetro0)){
+            tetro0.x += squareSize;
+            if(tetro0.x >= squareSize * 6)
+                tetro0.x = squareSize * 6;
+            tetro0.updateBlock();
+        }
+    
+        if(myArr.includes(tetro4)){
+            tetro4.x += squareSize;
+            if(tetro4.x >= squareSize * 6)
+                tetro4.x = squareSize * 6;
+            tetro4.updateBlock();
+        }
+    
+        if(myArr.includes(tetro8)){
+            tetro8.x += squareSize;
+            if(tetro8.x >= squareSize * 6)
+                tetro8.x = squareSize * 6;
+            tetro8.updateBlock();
+        }
+    }
+}
+
 function tetrominoesSlowFall(myArr){
     
     if(!(myArr.includes(tetro13) || myArr.includes(tetro14))){
@@ -574,231 +800,7 @@ function tetrominoesSlowFall(myArr){
     }
 }
 
-function moveTetrominoesRight(myArr){
-    
-    if(!(myArr.includes(tetro7) || myArr.includes(tetro11))){
-        if(!(myArr.includes(tetro2) || myArr.includes(tetro6) || myArr.includes(tetro10) || myArr.includes(tetro14))){
-            if(myArr.includes(tetro1)){
-                tetro1.x += squareSize;
-                if(tetro1.x >= squareSize * 9)
-                    tetro1.x = squareSize * 9;
-                tetro1.updateBlock();
-            }
-        
-            if(myArr.includes(tetro5)){
-                tetro5.x += squareSize;
-                if(tetro5.x >= squareSize * 9)
-                    tetro5.x = squareSize * 9;
-                tetro5.updateBlock();
-            }
-        
-            if(myArr.includes(tetro9)){
-                tetro9.x += squareSize;
-                if(tetro9.x >= squareSize * 9)
-                    tetro9.x = squareSize * 9;
-                tetro9.updateBlock();
-            }
-        
-            if(myArr.includes(tetro13)){
-                tetro13.x += squareSize;
-                if(tetro13.x >= squareSize * 9)
-                    tetro13.x = squareSize * 9;
-                tetro13.updateBlock();
-            }
-            
-            if(myArr.includes(tetro0)){
-                tetro0.x += squareSize;
-                if(tetro0.x >= squareSize * 8)
-                    tetro0.x = squareSize * 8;
-                tetro0.updateBlock();
-            }
-        
-            if(myArr.includes(tetro4)){
-                tetro4.x += squareSize;
-                if(tetro4.x >= squareSize * 8)
-                    tetro4.x = squareSize * 8;
-                tetro4.updateBlock();
-            }
-        
-            if(myArr.includes(tetro8)){
-                tetro8.x += squareSize;
-                if(tetro8.x >= squareSize * 8)
-                    tetro8.x = squareSize * 8;
-                tetro8.updateBlock();
-            }
-        }
-        else{
-            if(myArr.includes(tetro2)){
-                tetro2.x += squareSize;
-                if(tetro2.x >= squareSize * 9)
-                    tetro2.x = squareSize * 9;
-                tetro2.updateBlock();
-            }
-        
-            if(myArr.includes(tetro6)){
-                tetro6.x += squareSize;
-                if(tetro6.x >= squareSize * 9)
-                    tetro6.x = squareSize * 9;
-                tetro6.updateBlock();
-            }
-        
-            if(myArr.includes(tetro10)){
-                tetro10.x += squareSize;
-                if(tetro10.x >= squareSize * 9)
-                    tetro10.x = squareSize * 9;
-                tetro10.updateBlock();
-            }
-        
-            if(myArr.includes(tetro14)){
-                tetro14.x += squareSize;
-                if(tetro14.x >= squareSize * 9)
-                    tetro14.x = squareSize * 9;
-                tetro14.updateBlock();
-            }
-        
-            if(myArr.includes(tetro1)){
-                tetro1.x += squareSize;
-                if(tetro1.x >= squareSize * 8)
-                    tetro1.x = squareSize * 8;
-                tetro1.updateBlock();
-            }
-        
-            if(myArr.includes(tetro5)){
-                tetro5.x += squareSize;
-                if(tetro5.x >= squareSize * 8)
-                    tetro5.x = squareSize * 8;
-                tetro5.updateBlock();
-            }
-        
-            if(myArr.includes(tetro9)){
-                tetro9.x += squareSize;
-                if(tetro9.x >= squareSize * 8)
-                    tetro9.x = squareSize * 8;
-                tetro9.updateBlock();
-            }
-        
-            if(myArr.includes(tetro13)){
-                tetro13.x += squareSize;
-                if(tetro13.x >= squareSize * 8)
-                    tetro13.x = squareSize * 8;
-                tetro13.updateBlock();
-            }
-            
-            if(myArr.includes(tetro0)){
-                tetro0.x += squareSize;
-                if(tetro0.x >= squareSize * 7)
-                    tetro0.x = squareSize * 7;
-                tetro0.updateBlock();
-            }
-        
-            if(myArr.includes(tetro4)){
-                tetro4.x += squareSize;
-                if(tetro4.x >= squareSize * 7)
-                    tetro4.x = squareSize * 7;
-                tetro4.updateBlock();
-            }
-        
-            if(myArr.includes(tetro8)){
-                tetro8.x += squareSize;
-                if(tetro8.x >= squareSize * 7)
-                    tetro8.x = squareSize * 7;
-                tetro8.updateBlock();
-            }
-        }
-    }
-    else{
-        if(myArr.includes(tetro7)){
-            tetro7.x += squareSize;
-            if(tetro7.x >= squareSize * 9)
-                tetro7.x = squareSize * 9;
-            tetro7.updateBlock();
-        }
-    
-        if(myArr.includes(tetro11)){
-            tetro11.x += squareSize;
-            if(tetro11.x >= squareSize * 9)
-                tetro11.x = squareSize * 9;
-            tetro11.updateBlock();
-        }
-    
-        if(myArr.includes(tetro2)){
-            tetro2.x += squareSize;
-            if(tetro2.x >= squareSize * 8)
-                tetro2.x = squareSize * 8;
-            tetro2.updateBlock();
-        }
-    
-        if(myArr.includes(tetro6)){
-            tetro6.x += squareSize;
-            if(tetro6.x >= squareSize * 8)
-                tetro6.x = squareSize * 8;
-            tetro6.updateBlock();
-        }
-    
-        if(myArr.includes(tetro10)){
-            tetro10.x += squareSize;
-            if(tetro10.x >= squareSize * 8)
-                tetro10.x = squareSize * 8;
-            tetro10.updateBlock();
-        }
-    
-        if(myArr.includes(tetro14)){
-            tetro14.x += squareSize;
-            if(tetro14.x >= squareSize * 8)
-                tetro14.x = squareSize * 8;
-            tetro14.updateBlock();
-        }
-    
-        if(myArr.includes(tetro1)){
-            tetro1.x += squareSize;
-            if(tetro1.x >= squareSize * 7)
-                tetro1.x = squareSize * 7;
-            tetro1.updateBlock();
-        }
-    
-        if(myArr.includes(tetro5)){
-            tetro5.x += squareSize;
-            if(tetro5.x >= squareSize * 7)
-                tetro5.x = squareSize * 7;
-            tetro5.updateBlock();
-        }
-    
-        if(myArr.includes(tetro9)){
-            tetro9.x += squareSize;
-            if(tetro9.x >= squareSize * 7)
-                tetro9.x = squareSize * 7;
-            tetro9.updateBlock();
-        }
-    
-        if(myArr.includes(tetro13)){
-            tetro13.x += squareSize;
-            if(tetro13.x >= squareSize * 7)
-                tetro13.x = squareSize * 7;
-            tetro13.updateBlock();
-        }
-        
-        if(myArr.includes(tetro0)){
-            tetro0.x += squareSize;
-            if(tetro0.x >= squareSize * 6)
-                tetro0.x = squareSize * 6;
-            tetro0.updateBlock();
-        }
-    
-        if(myArr.includes(tetro4)){
-            tetro4.x += squareSize;
-            if(tetro4.x >= squareSize * 6)
-                tetro4.x = squareSize * 6;
-            tetro4.updateBlock();
-        }
-    
-        if(myArr.includes(tetro8)){
-            tetro8.x += squareSize;
-            if(tetro8.x >= squareSize * 6)
-                tetro8.x = squareSize * 6;
-            tetro8.updateBlock();
-        }
-    }
-}
+
 
 //Tetrominos
 
