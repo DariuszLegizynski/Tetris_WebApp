@@ -22,6 +22,7 @@ function startGame(key){
 
     if (key === "Enter"){
         
+        //drawZeroedGameBoard();
         makeNewTestBlock();
         setInterval(updateGameBoard, ms);  //1000/ms(=20) = 50 fps
     }
@@ -54,65 +55,87 @@ function updateGameBoard(){
     tetrominoesSlowFall(tetrominoes);
 }
 
-var gameBoardSquared = [];
-
-//Make the game board squared
+//Make the game board squared (in the canvas the y is row and the x is column
 function drawSquaredGameBoard() {
-    for(var col = 0; col < 10; col++){
+    var gameBoardSquared = [];
+    for(var col = 0; col < 20; col++){
         gameBoardSquared[col] = [];
-        for(var row = 0; row < 20; row++){
-            gameBoardSquared[col][row] = new GridBlock("white", col * 40, row * 40); //behind the "=" sign is to check, if the gameBoard is sliced into squares.
+        for(var row = 0; row < 10; row++){
+            gameBoardSquared[col][row] = new BasicBlock("white", row * squareSize, col * squareSize); //behind the "=" sign is to check, if the gameBoard is sliced into squares.
         }
     }
 }
 
 //Optional: TODO: a dark game board, where only the tetrominoes and/or the borders of the game board would glow
-
-function GridBlock (squareColor, x, y){
-    this.squareColor = squareColor;
-    this.x = x;
-    this.y = y;
-    ctx.fillStyle = squareColor;
-    ctx.strokeStyle = "black";
-    ctx.lineWidth = 3;
-    ctx.fillRect(this.x, this.y, squareSize, squareSize);
-    ctx.strokeRect(this.x, this.y, squareSize, squareSize);
-}
-
-function SimpleBlock (squareColor, x, y){
-    this.squareColor = squareColor;
-    this.x = x;
-    this.y = y;
-
-    this.updateBlock = function(){
-        ctx.fillStyle = squareColor;
+class BasicBlock{
+    constructor(tempSquareColor, tempX, tempY){
+        this.squareColor = tempSquareColor;
+        this.x = tempX;
+        this.y = tempY;
+        ctx.fillStyle = this.squareColor;
         ctx.strokeStyle = "black";
         ctx.lineWidth = 3;
         ctx.fillRect(this.x, this.y, squareSize, squareSize);
         ctx.strokeRect(this.x, this.y, squareSize, squareSize);
     }
+    updateBlock(){
+        ctx.fillStyle = this.squareColor;
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 3;
+        ctx.fillRect(this.x, this.y, squareSize, squareSize);
+        ctx.strokeRect(this.x, this.y, squareSize, squareSize);
+    }
+
 }
+
+// function GridBlock (squareColor, x, y){
+//     ctx.fillStyle = squareColor;
+//     ctx.strokeStyle = "black";
+//     ctx.lineWidth = 3;
+//     ctx.fillRect(x, y, squareSize, squareSize);
+//     ctx.strokeRect(x, y, squareSize, squareSize);
+// }
+
+// function SimpleBlock (squareColor, x, y){
+//     this.squareColor = squareColor;
+//     this.x = x;
+//     this.y = y;
+
+//     this.updateBlock = function(){
+//         ctx.fillStyle = squareColor;
+//         ctx.strokeStyle = "black";
+//         ctx.lineWidth = 3;
+//         ctx.fillRect(this.x, this.y, squareSize, squareSize);
+//         ctx.strokeRect(this.x, this.y, squareSize, squareSize);
+//     }
+
+//     this.collisionDetection = function(){
+
+//     }
+// }
 
 //Declaration of variables, of a [4x4] tetromino array. Excluding the cells, that are never used (like tetro3)
 var tetro0, tetro1, tetro2, tetro4, tetro5, tetro6, tetro7, tetro8, tetro9, tetro10, tetro11, tetro13, tetro14;
 var tetrominoes = [];
 
-function makeNewTestBlock(){
-    tetro0 = new SimpleBlock("blue", 160, 0);
-    tetro1 = new SimpleBlock("blue", 200, 0);
-    tetro2 = new SimpleBlock("blue", 240, 0);
-    tetro4 = new SimpleBlock("blue", 160, 40);
-    tetro5 = new SimpleBlock("blue", 200, 40);
-    tetro6 = new SimpleBlock("blue", 240, 40);
-    tetro7 = new SimpleBlock("blue", 280, 40);
-    tetro8 = new SimpleBlock("blue", 160, 80);
-    tetro9 = new SimpleBlock("blue", 200, 80);
-    tetro10 = new SimpleBlock("blue", 240, 80);
-    tetro11 = new SimpleBlock("blue", 280, 80);
-    tetro13 = new SimpleBlock("blue", 200, 120);
-    tetro14 = new SimpleBlock("blue", 240, 120);
+//Tetrominos
 
-    var i = Math.floor(Math.random() * 4);
+//TODO: a table with all tetrominoes [J, L, T, etc] and then pick 1 by random and use it on the game board.
+
+function makeNewTestBlock(){
+    tetro0 = new BasicBlock("blue", 160, 0);
+    tetro1 = new BasicBlock("blue", 200, 0);
+    tetro2 = new BasicBlock("blue", 240, 0);
+    tetro4 = new BasicBlock("blue", 160, 40);
+    tetro5 = new BasicBlock("blue", 200, 40);
+    tetro6 = new BasicBlock("blue", 240, 40);
+    tetro7 = new BasicBlock("blue", 280, 40);
+    tetro8 = new BasicBlock("blue", 160, 80);
+    tetro9 = new BasicBlock("blue", 200, 80);
+    tetro10 = new BasicBlock("blue", 240, 80);
+    tetro11 = new BasicBlock("blue", 280, 80);
+    tetro13 = new BasicBlock("blue", 200, 120);
+    tetro14 = new BasicBlock("blue", 240, 120);
 
     var tetrominoJ0 = [tetro1, tetro5, tetro8, tetro9];
     var tetrominoJ1 = [tetro4, tetro5, tetro6, tetro10];
@@ -127,8 +150,10 @@ function makeNewTestBlock(){
     var tetrominoS3 = [tetro1, tetro2, tetro4, tetro5];
 
     var tetrominoS = [tetrominoS0, tetrominoS1, tetrominoS2, tetrominoS3];
-
+    
+    var i = Math.floor(Math.random() * 4);
     var tetrominoesArr = [tetrominoJ[i], tetrominoS[i]];
+
     var x = Math.floor(Math.random() * 2);
     tetrominoes = tetrominoesArr[x];
     return tetrominoes;
@@ -800,8 +825,6 @@ function tetrominoesSlowFall(myArr){
     }
 }
 
-
-
-//Tetrominos
-
-//TODO: a table with all tetrominoes [J, L, T, etc] and then pick 1 by random and use it on the game board.
+function collisionDetection() {
+    
+}
