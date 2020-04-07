@@ -18,13 +18,21 @@ document.addEventListener("keydown", function(event){
     startGame(event.key);
 });
 
+var myInterval;
+myInterval = setInterval(updateGameBoard, ms);  //1000/ms(=20) = 50 fps
+
+function updateGameBoard(){
+
+    drawSquaredGameBoard();
+    tetrominoesSlowFall(tetrominoes);
+}
+
 function startGame(key){
 
     if (key === "Enter"){
         
         makeNewTestBlock();
-        toggleGameInterval();
-        setInterval(updateGameBoard, ms);
+
     }
 
     else if (key==="ArrowUp")
@@ -49,56 +57,42 @@ function startGame(key){
         console.log("Psst, press 'Enter' to start");
 }
 
-function updateGameBoard(){
-
-    drawSquaredGameBoard();
-    tetrominoesSlowFall(tetrominoes);
-    //testCollisionDetection(tetrominoes, myObstacles);
-}
-
-var myInterval;
-
-function toggleGameInterval(){
-
-    myInterval = setInterval(updateGameBoard, ms);  //1000/ms(=20) = 50 fps
-}
-
 //Optional: TODO: a dark game board, where only the tetrominoes and/or the borders of the game board would glow
 class SimpleBlock{
-    constructor(posX, posY){
-        this.x = posX;
-        this.y = posY;
+    constructor(tempSquareColor, boardPosX, boardPosY){
+        this.x = boardPosX;
+        this.y = boardPosY;
+        this.squareColor = tempSquareColor;
     }
 }
 
 class GridBlock extends SimpleBlock{
-    constructor(tempSquareColor, posX, posY){
-        super(posX, posY);
-        this.squareColor = tempSquareColor;
+    constructor(tempSquareColor, boardPosX, boardPosY){
+        super(tempSquareColor, boardPosX, boardPosY);
+        
         ctx.fillStyle = this.squareColor;
         ctx.strokeStyle = "black";
         ctx.lineWidth = 3;
-        ctx.fillRect(this.x, this.y, squareSize, squareSize);
-        ctx.strokeRect(this.x, this.y, squareSize, squareSize);
+        ctx.fillRect(this.x * squareSize, this.y * squareSize, squareSize, squareSize);
+        ctx.strokeRect(this.x * squareSize, this.y * squareSize, squareSize, squareSize);
     }
 }
 
+var gameBoardSquared = [];
+
 //Make the game board squared (in the canvas the y is row and the x is column
 function drawSquaredGameBoard() {
-    var gameBoardSquared = [];
     for(var row = 0; row < 10; row++){
         gameBoardSquared[row] = [];
         for(var col = 0; col < 20; col++){
-            gameBoardSquared[row][col] = new GridBlock("white", row * squareSize, col * squareSize);
+            gameBoardSquared[row][col] = new GridBlock("white", row, col);
         }
     }
 }
 
 class BasicBlock extends SimpleBlock{
-    constructor(tempSquareColor, posX, posY, collidedWithObstacle){
-        super(posX, posY);
-        this.squareColor = tempSquareColor;
-        this.collidedWithObstacle = collidedWithObstacle;
+    constructor(tempSquareColor, boardPosX, boardPosY){
+        super(tempSquareColor, boardPosX, boardPosY);
     }
 
     updateBlock(){
@@ -179,9 +173,9 @@ function makeNewTestBlock(){
 
     var x = Math.floor(Math.random() * 2);
     tetrominoes = tetrominoesArr[x];
-    tetrominoes.reverse();              //to start drawing the tetromino from the bottom line
     return tetrominoes;
 }
+
 
 function moveTetrominoesLeft(myArr){
 
@@ -214,6 +208,10 @@ function moveTetrominoesRight(myArr){
 }
 
 function tetrominoesSlowFall(myArr){
+    console.log(myArr);
+    gameBoardSquared[5][5] = myArr; //myArr really is at [5][5]! And if the tetromino is not falling down (didnt press enter), than there is nothing!
+    console.log(gameBoardSquared);
+
 
     if(myArr.some(k => k.y > squareSize * 18)){
         for(let i of myArr){
@@ -226,8 +224,4 @@ function tetrominoesSlowFall(myArr){
             i.updateBlock();
         }
     }
-}
-
-function testCollisionDetection(firstArray, secondArray){
-    
 }
