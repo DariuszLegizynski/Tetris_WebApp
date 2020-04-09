@@ -22,17 +22,15 @@ var myInterval;
 myInterval = setInterval(updateGameBoard, ms);  //1000/ms(=20) = 50 fps
 
 function updateGameBoard(){
-
-    drawSquaredGameBoard();
     tetrominoesSlowFall(tetrominoes);
+    drawGameBoard();
 }
 
 function startGame(key){
 
     if (key === "Enter"){
-        
+        drawSquaredGameBoard();
         makeNewTestBlock();
-
     }
 
     else if (key==="ArrowUp")
@@ -40,12 +38,10 @@ function startGame(key){
         return;
 
     else if (key==="ArrowLeft"){
-        drawSquaredGameBoard();
         moveTetrominoesLeft(tetrominoes);
     }
 
     else if (key==="ArrowRight"){
-        drawSquaredGameBoard();
         moveTetrominoesRight(tetrominoes);
     }
 
@@ -80,12 +76,12 @@ class GridBlock extends SimpleBlock{
 
 var gameBoardSquared = [];
 
-//Make the game board squared (in the canvas the y is row and the x is column
+//Make the game board squared (in the canvas the y is row and the x is column)
 function drawSquaredGameBoard() {
     for(var row = 0; row < 10; row++){
         gameBoardSquared[row] = [];
         for(var col = 0; col < 20; col++){
-            gameBoardSquared[row][col] = new GridBlock("white", row, col);
+            gameBoardSquared[row][col] = new BasicBlock("white", row, col);
         }
     }
 }
@@ -95,24 +91,32 @@ class BasicBlock extends SimpleBlock{
         super(tempSquareColor, boardPosX, boardPosY);
     }
 
-    updateBlock(){
+    drawBlock(){
         ctx.fillStyle = this.squareColor;
         ctx.strokeStyle = "black";
         ctx.lineWidth = 3;
-        ctx.fillRect(this.x, this.y, squareSize, squareSize);
-        ctx.strokeRect(this.x, this.y, squareSize, squareSize);
+        ctx.fillRect(this.x * squareSize, this.y * squareSize, squareSize, squareSize);
+        ctx.strokeRect(this.x * squareSize, this.y * squareSize, squareSize, squareSize);
+    }
+
+    undrawBlock(){
+        ctx.fillStyle = "white";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 3;
+        ctx.fillRect(this.x * squareSize, this.y * squareSize, squareSize, squareSize);
+        ctx.strokeRect(this.x * squareSize, this.y * squareSize, squareSize, squareSize);
     }
 
     moveLeft(){
-        this.x -= squareSize;
+        this.x--;
     }
 
     moveRight(){
-        this.x += squareSize;
+        this.x++;
     }
 
     slowFall(){
-        this.y += squareSize;
+        this.y++;
     }
 }
 
@@ -125,19 +129,19 @@ var tetrominoes = [];
 
 function makeNewTestBlock(){
     var tetro = [];
-    tetro[0] = new BasicBlock("blue", 160, 0);
-    tetro[1] = new BasicBlock("blue", 200, 0);
-    tetro[2] = new BasicBlock("blue", 240, 0);
-    tetro[4] = new BasicBlock("blue", 160, 40);
-    tetro[5] = new BasicBlock("blue", 200, 40);
-    tetro[6] = new BasicBlock("blue", 240, 40);
-    tetro[7] = new BasicBlock("blue", 280, 40);
-    tetro[8] = new BasicBlock("blue", 160, 80);
-    tetro[9] = new BasicBlock("blue", 200, 80);
-    tetro[10] = new BasicBlock("blue", 240, 80);
-    tetro[11] = new BasicBlock("blue", 280, 80);
-    tetro[13] = new BasicBlock("blue", 200, 120);
-    tetro[14] = new BasicBlock("blue", 240, 120);
+    tetro[0] = new BasicBlock("blue", 4, 0);
+    tetro[1] = new BasicBlock("blue", 5, 0);
+    tetro[2] = new BasicBlock("blue", 6, 0);
+    tetro[4] = new BasicBlock("blue", 4, 1);
+    tetro[5] = new BasicBlock("blue", 5, 1);
+    tetro[6] = new BasicBlock("blue", 6, 1);
+    tetro[7] = new BasicBlock("blue", 7, 1);
+    tetro[8] = new BasicBlock("blue", 4, 2);
+    tetro[9] = new BasicBlock("blue", 5, 2);
+    tetro[10] = new BasicBlock("blue", 6, 2);
+    tetro[11] = new BasicBlock("blue", 7, 2);
+    tetro[13] = new BasicBlock("blue", 5, 3);
+    tetro[14] = new BasicBlock("blue", 6, 3);
 
     // var tetrominoJ0 = [        
     //     tetro[1].tempSquareColor = "yellow",
@@ -176,52 +180,64 @@ function makeNewTestBlock(){
     return tetrominoes;
 }
 
-
 function moveTetrominoesLeft(myArr){
 
-    if(myArr.some(k => k.x - squareSize < 0)){
+    if(myArr.some(k => k.x - 1 < 0)){
         for(let i of myArr){
-            i.updateBlock();
+            i.drawBlock();
         }
     }
     else{
-        for(let i of myArr){
+        for(var i of myArr){
+            i.undrawBlock();
+        }
+        for(var i of myArr){
             i.moveLeft();
-            i.updateBlock();
+            i.drawBlock();
         }
     }
 }
 
 function moveTetrominoesRight(myArr){
     
-    if(myArr.some(k => k.x + squareSize > squareSize * 9)){
+    if(myArr.some(k => k.x + 1 > 9)){
         for(let i of myArr){
-            i.updateBlock();
+            i.drawBlock();
         }
     }
     else{
-        for(let i of myArr){
+        for(var i of myArr){
+            i.undrawBlock();
+        }
+        for(var i of myArr){
             i.moveRight();
-            i.updateBlock();
+            i.drawBlock();
         }
     }
 }
 
 function tetrominoesSlowFall(myArr){
-    console.log(myArr);
-    gameBoardSquared[5][5] = myArr; //myArr really is at [5][5]! And if the tetromino is not falling down (didnt press enter), than there is nothing!
-    console.log(gameBoardSquared);
 
-
-    if(myArr.some(k => k.y > squareSize * 18)){
+    if(myArr.some(k => k.y > 8)){
         for(let i of myArr){
-            i.updateBlock();
+            i.drawBlock();
+            gameBoardSquared[i.x][i.y] = i;        
         }
+        makeNewTestBlock();
     }
     else{
-        for(let i of myArr){
-            i.slowFall();
-            i.updateBlock();
+        for(var i of myArr){
+            i.undrawBlock();
         }
+        for(var i of myArr){
+            i.slowFall();
+            i.drawBlock();
+        }
+    }
+}
+
+function drawGameBoard(){
+    for(var i in gameBoardSquared){
+        i.squareColor = "blue";
     }
 }
