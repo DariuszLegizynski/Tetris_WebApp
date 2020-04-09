@@ -81,7 +81,7 @@ function drawSquaredGameBoard() {
     for(var row = 0; row < 10; row++){
         gameBoardSquared[row] = [];
         for(var col = 0; col < 20; col++){
-            gameBoardSquared[row][col] = new BasicBlock("white", row, col);
+            gameBoardSquared[row][col] = new GridBlock("white", row, col);
         }
     }
 }
@@ -218,7 +218,7 @@ function moveTetrominoesRight(myArr){
 
 function tetrominoesSlowFall(myArr){
 
-    if(myArr.some(k => k.y > 8)){
+    if(myArr.some(k => k.y > 18)){
         for(let i of myArr){
             i.drawBlock();
             gameBoardSquared[i.x][i.y] = i;        
