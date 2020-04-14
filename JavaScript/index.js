@@ -218,8 +218,25 @@ function moveTetrominoesRight(myArr){
 
 function tetrominoesSlowFall(myArr){
 
+<<<<<<< Updated upstream
     if(myArr.some(k => k.y > 18)){
         for(let i of myArr){
+=======
+    
+    for(let i of myArr){
+        i.undrawBlock();
+    }
+    for(let i of myArr){
+        i.slowFall();
+        i.drawBlock();
+    }
+}
+
+function collisionDetection(myArr){
+
+    for(var i of myArr){
+        if(myArr.some(k => k.squareColor == gameBoardSquared[k.x][k.y+1].squareColor)){
+>>>>>>> Stashed changes
             i.drawBlock();
             gameBoardSquared[i.x][i.y] = i;        
         }
