@@ -22,8 +22,14 @@ var myInterval;
 myInterval = setInterval(updateGameBoard, ms);  //1000/ms(=20) = 50 fps
 
 function updateGameBoard(){
-    tetrominoesSlowFall(tetrominoes);
-    drawGameBoard();
+    if(collisionDetection(tetrominoes)){
+        drawUpdatedGameBoard();
+        makeNewTestBlock();
+    }
+    else{
+        tetrominoesSlowFall(tetrominoes);
+        drawUpdatedGameBoard();
+    }
 }
 
 function startGame(key){
@@ -82,6 +88,16 @@ function drawSquaredGameBoard() {
         gameBoardSquared[row] = [];
         for(var col = 0; col < 20; col++){
             gameBoardSquared[row][col] = new GridBlock("white", row, col);
+        }
+    }
+}
+
+function drawUpdatedGameBoard(){
+    for(var m of gameBoardSquared){
+        for(var n of m){
+            if(n.squareColor !== "white"){
+                n.drawBlock();
+            }
         }
     }
 }
@@ -216,28 +232,56 @@ function moveTetrominoesRight(myArr){
     }
 }
 
+// function tetrominoesSlowFall(myArr){
+//     if(myArr.some(k => k.y > 8)){
+//         for(var i of myArr){
+//             i.drawBlock();
+//             gameBoardSquared[i.x][i.y] = i;
+//         }
+//         makeNewTestBlock();
+//     }
+//     else{
+//         for(let i of myArr){
+//             i.undrawBlock();
+//         }
+//         for(let i of myArr){
+//             i.slowFall();
+//             i.drawBlock();
+//         }
+//     }
+// }
+
 function tetrominoesSlowFall(myArr){
 
-    if(myArr.some(k => k.y > 18)){
-        for(let i of myArr){
-            i.drawBlock();
-            gameBoardSquared[i.x][i.y] = i;        
-        }
-        makeNewTestBlock();
+    for(let i of myArr){
+        i.undrawBlock();
     }
-    else{
-        for(var i of myArr){
-            i.undrawBlock();
-        }
-        for(var i of myArr){
-            i.slowFall();
-            i.drawBlock();
-        }
+    for(let i of myArr){
+        i.slowFall();
+        i.drawBlock();
     }
 }
 
-function drawGameBoard(){
-    for(var i in gameBoardSquared){
-        i.squareColor = "blue";
+function collisionDetection(myArr){
+
+    for(var i of myArr){
+        if(myArr.some(k => k.squareColor == gameBoardSquared[k.x][k.y+1].squareColor)){
+            i.drawBlock();
+            gameBoardSquared[i.x][i.y] = i;
+            return true;
+        }
+        else if(gameBoardSquared[i.x+1][i.y].squareColor === "blue"){
+            console.log("hit right");
+        }
+        else if(gameBoardSquared[i.x-1][i.y].squareColor === "blue"){
+            console.log("hit left");
+        }
+        else if(myArr.some(k => k.y > 17)){
+            for(var i of myArr){
+                i.drawBlock();
+                gameBoardSquared[i.x][i.y] = i;
+            }
+        }
     }
+    return false;
 }
