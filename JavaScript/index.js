@@ -198,7 +198,7 @@ function makeNewTestBlock(){
 
 function moveTetrominoesLeft(myArr){
 
-    if(myArr.some(k => k.x - 1 < 0)){
+    if(myArr.some(k => k.x - 1 < 0) || myArr.some(k => k.squareColor == gameBoardSquared[k.x-1][k.y].squareColor)){
         for(let i of myArr){
             i.drawBlock();
         }
@@ -216,7 +216,7 @@ function moveTetrominoesLeft(myArr){
 
 function moveTetrominoesRight(myArr){
     
-    if(myArr.some(k => k.x + 1 > 9)){
+    if(myArr.some(k => k.x + 1 > 9) || myArr.some(k => k.squareColor == gameBoardSquared[k.x+1][k.y].squareColor)){
         for(let i of myArr){
             i.drawBlock();
         }
@@ -246,12 +246,12 @@ function tetrominoesSlowFall(myArr){
 function collisionDetection(myArr){
 
     for(var i of myArr){
-        if(myArr.some(k => k.squareColor == gameBoardSquared[k.x+1][k.y].squareColor)){
-            i.drawBlock();
-        }
-        if(myArr.some(k => k.squareColor == gameBoardSquared[k.x-1][k.y].squareColor)){
-            i.drawBlock();
-        }
+        // if(myArr.some(k => k.squareColor == gameBoardSquared[k.x+1][k.y].squareColor)){
+        //     i.drawBlock();
+        // }
+        // if(myArr.some(k => k.squareColor == gameBoardSquared[k.x-1][k.y].squareColor)){
+        //     i.drawBlock();
+        // }
         if(myArr.some(k => k.squareColor == gameBoardSquared[k.x][k.y+1].squareColor)){
             for(var i of myArr){
                 i.drawBlock();
