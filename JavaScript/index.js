@@ -100,21 +100,26 @@ function drawSquaredGameBoard() {
     }
 }
 
+// var clearRow = (myArr, n) => myArr.map(x => for(x[n] of gameBoardSquared));
+
 function drawUpdatedGameBoard(){
+    var clearRow = [];
     for(var m of gameBoardSquared){
         for(var n of m){
-            console.log(gameBoardSquared[m][n]);
             if(n.squareColor !== "white"){
                 n.drawBlock();
-            }
-            if(n.every(k => k.squareColor === "blue")){
-                gameBoardSquared.splice(n, 1);
-                m.every(k => k = 0);
-                // gameBoardSquared[m][n] = new GridBlock("white", m, n);
-                console.log("splice!");
+                clearRow.push([n]);
             }
         }
     }
+
+    // console.log(clearRow);
+
+    for(var j of clearRow){
+        console.log(j);
+    }
+    // console.log(clearRow(gameBoardSquared));
+    // console.log(clearRow(gameBoardSquared, gameBoardSquared.length));
 }
 
 class BasicBlock extends SimpleBlock{
@@ -238,7 +243,7 @@ function moveTetrominoesLeft(myArr){
 
 function moveTetrominoesRight(myArr){
     
-    if(myArr.some(k => k.x + 1 > 9) || myArr.some(k => k.squareColor == gameBoardSquared[k.x+1][k.y].squareColor)){
+    if(myArr.some(k => k.x + 1 > gameBoardSquared.length-1) || myArr.some(k => k.squareColor == gameBoardSquared[k.x+1][k.y].squareColor)){
         for(let i of myArr){
             i.drawBlock();
         }
@@ -266,9 +271,9 @@ function tetrominoesSlowFall(myArr){
 }
 
 function collisionDetection(myArr){
-
+    const topBoardBorder = 4;
     for(var i of myArr){
-        if(myArr.some(k => k.squareColor == gameBoardSquared[k.x][k.y].squareColor) && myArr.some(k => k.y < 4)){
+        if(myArr.some(k => k.squareColor == gameBoardSquared[k.x][k.y].squareColor) && myArr.some(k => k.y < topBoardBorder)){
             console.log("Game Over");
             gameOver = true;
         }
