@@ -103,23 +103,34 @@ function drawSquaredGameBoard() {
 // var clearRow = (myArr, n) => myArr.map(x => for(x[n] of gameBoardSquared));
 
 function drawUpdatedGameBoard(){
-    var clearRow = [];
+
     for(var m of gameBoardSquared){
         for(var n of m){
             if(n.squareColor !== "white"){
                 n.drawBlock();
-                clearRow.push([n]);
             }
         }
     }
 
-    // console.log(clearRow);
+    var clearRow = gameBoardSquared[0].map((col, i) => gameBoardSquared.map(row => row[i]));
 
-    for(var j of clearRow){
-        console.log(j);
+    for(var i of clearRow){
+        if(i.every(k => k.squareColor !== "white")){
+            console.log("clear!");
+        }
+        // for(j of i){
+        //     console.log(j);
+        // }
+        
+        // isFilled = true;
+        // for(var j of i){
+        //     console.log(j);
+        // }
     }
-    // console.log(clearRow(gameBoardSquared));
-    // console.log(clearRow(gameBoardSquared, gameBoardSquared.length));
+}
+
+function transpose(myArr){
+
 }
 
 class BasicBlock extends SimpleBlock{
