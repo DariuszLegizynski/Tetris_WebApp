@@ -7,6 +7,10 @@ var ctx = canvas.getContext("2d");
 
 var clickButtons = document.querySelectorAll(".click-button");
 
+const gameBoardColumns = 20;
+const gameBoardRows = 10;
+const playableGameBoardLength = 8;
+
 var gameOver = false;
 
 for (var i = 0; i < clickButtons.length; i++){
@@ -93,9 +97,9 @@ var gameBoardSquared = [];
 
 //Make the game board squared (in the canvas the y is row and the x is column)
 function drawSquaredGameBoard() {
-    for(var row = 0; row < 10; row++){
+    for(var row = 0; row < gameBoardRows; row++){
         gameBoardSquared[row] = [];
-        for(var col = 0; col < 20; col++){
+        for(var col = 0; col < gameBoardColumns; col++){
             gameBoardSquared[row][col] = new GridBlock("white", row, col);
         }
     }
@@ -276,7 +280,7 @@ function collisionDetection(myArr){
             }
             return true;
         }
-        else if(myArr.some(k => k.y > 8)){
+        else if(myArr.some(k => k.y > playableGameBoardLength)){
             for(var i of myArr){
                 i.drawBlock();
                 gameBoardSquared[i.x][i.y] = i;
@@ -289,16 +293,10 @@ function collisionDetection(myArr){
 function clearRow(){
 
     for(var rows = 0; rows < gameBoardSquared.length; rows++){ 
-
-        for(var cols = 0; cols < gameBoardSquared[rows].length; cols++){
-            // console.log(gameBoardSquared[cols]);
-            // if(gameBoardSquared[cols][rows].squareColor == "blue"){
-            //     console.log(gameBoardSquared[cols][rows]);
-            // }
-
-        }
         if(gameBoardSquared.every(k => k[rows].squareColor == "blue")){
             console.log("ERFEACADSC");
+            gameBoardSquared[rows].splice(rows, 1);
+            console.log(gameBoardSquared);
         }
     }
     
