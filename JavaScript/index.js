@@ -112,25 +112,34 @@ function drawUpdatedGameBoard(){
         }
     }
 
-    var clearRow = gameBoardSquared[0].map((col, i) => gameBoardSquared.map(row => row[i]));
+    // for(var i of clearRow){
+    //     var isFilled = false;
+    //     if(i.every(k => k.squareColor !== "white")){
+    //         isFilled = true;
+    //     }
+    //     if(isFilled){
+    //         gameBoardSquared = gameBoardSquared[0].map((col, i) => gameBoardSquared.map(row => row[i]));
+    //         gameBoardSquared.splice(i, 1);
+    //         gameBoardSquared.unshift([new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col)]);
+    //         console.log("KAZAAAAAAAAHMMMMMMMMMMMM");
+    //         console.log(gameBoardSquared);
+    //     }
+    // }
 
-    for(var i of clearRow){
-        if(i.every(k => k.squareColor !== "white")){
-            console.log("clear!");
-        }
-        // for(j of i){
-        //     console.log(j);
-        // }
-        
-        // isFilled = true;
-        // for(var j of i){
-        //     console.log(j);
-        // }
-    }
-}
+    // var clearRow = gameBoardSquared[0].map((col, i) => gameBoardSquared.map(row => row[i]));
 
-function transpose(myArr){
-
+    // for(var i of clearRow){
+    //     var isFilled = false;
+    //     console.log(i);
+    //     if(i.every(k => k.squareColor !== "white")){
+    //         isFilled = true;
+    //     }
+    //     if(isFilled){
+    //         clearRow.splice(i, 1);
+    //         console.log("KAZAAAAAAAAHMMMMMMMMMMMM");
+    //         gameBoardSquared = clearRow;
+    //     }
+    // }
 }
 
 class BasicBlock extends SimpleBlock{
