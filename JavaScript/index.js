@@ -27,6 +27,7 @@ function updateGameBoard(){
     if(!gameOver){
         if(collisionDetection(tetrominoes)){
             drawUpdatedGameBoard();
+            clearRow();
             makeNewTestBlock();
         }
         else{
@@ -111,35 +112,6 @@ function drawUpdatedGameBoard(){
             }
         }
     }
-
-    // for(var i of clearRow){
-    //     var isFilled = false;
-    //     if(i.every(k => k.squareColor !== "white")){
-    //         isFilled = true;
-    //     }
-    //     if(isFilled){
-    //         gameBoardSquared = gameBoardSquared[0].map((col, i) => gameBoardSquared.map(row => row[i]));
-    //         gameBoardSquared.splice(i, 1);
-    //         gameBoardSquared.unshift([new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col)]);
-    //         console.log("KAZAAAAAAAAHMMMMMMMMMMMM");
-    //         console.log(gameBoardSquared);
-    //     }
-    // }
-
-    // var clearRow = gameBoardSquared[0].map((col, i) => gameBoardSquared.map(row => row[i]));
-
-    // for(var i of clearRow){
-    //     var isFilled = false;
-    //     console.log(i);
-    //     if(i.every(k => k.squareColor !== "white")){
-    //         isFilled = true;
-    //     }
-    //     if(isFilled){
-    //         clearRow.splice(i, 1);
-    //         console.log("KAZAAAAAAAAHMMMMMMMMMMMM");
-    //         gameBoardSquared = clearRow;
-    //     }
-    // }
 }
 
 class BasicBlock extends SimpleBlock{
@@ -312,4 +284,87 @@ function collisionDetection(myArr){
         }
     }
     return false;
+}
+
+function clearRow(){
+
+    for(var rows = 0; rows < gameBoardSquared.length; rows++){ 
+
+        for(var cols = 0; cols < gameBoardSquared[rows].length; cols++){
+            // console.log(gameBoardSquared[cols]);
+            // if(gameBoardSquared[cols][rows].squareColor == "blue"){
+            //     console.log(gameBoardSquared[cols][rows]);
+            // }
+
+        }
+        if(gameBoardSquared.every(k => k[rows].squareColor == "blue")){
+            console.log("ERFEACADSC");
+        }
+    }
+    
+    // for(var rows = 0; rows < gameBoardSquared.length; rows++){
+    //     console.log(gameBoardSquared[rows]);
+    // for(var cols = 0; cols < gameBoardSquared[rows].length; cols++){
+
+    //     }
+    // }
+
+
+
+    // var checkForClearRows = gameBoardSquared[0].map((col, i) => gameBoardSquared.map(row => row[i]));
+    // for(var i of checkForClearRows){
+    //     var isFilled = false;
+    //     if(i.every(k => k.squareColor !== "white")){
+    //         // gameBoardSquared[i.x] = i;
+    //         gameBoardSquared.splice(i, 1);
+    //         console.table(gameBoardSquared);
+    //     }
+    // }
+    // var checkForClearRows = gameBoardSquared[0].map((col, i) => gameBoardSquared.map(row => row[i]));
+    // for(var i of checkForClearRows){
+    //     var isFilled = false;
+    //     if(i.every(k => k.squareColor !== "white")){
+    //         isFilled = true;
+    //     }
+    //     if(isFilled){
+    //         console.log("here");
+    //         for(c of gameBoardSquared){
+    //             for(v of c){
+    //                 v.
+    //             }
+    //         }
+            // for(var rows = i.y; rows > 1; rows--){
+            //     for(var cols = 0; cols < 20; cols++){
+            //         gameBoardSquared[rows][cols] = gameBoardSquared[rows - 1][cols];
+            //     }
+            // }
+    // }
+    // for(var i of clearRow){
+    //     var isFilled = false;
+    //     if(i.every(k => k.squareColor !== "white")){
+    //         isFilled = true;
+    //     }
+    //     if(isFilled){
+    //         gameBoardSquared = gameBoardSquared[0].map((col, i) => gameBoardSquared.map(row => row[i]));
+    //         gameBoardSquared.splice(i, 1);
+    //         gameBoardSquared.unshift([new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col), new GridBlock("white", row, col)]);
+    //         console.log("KAZAAAAAAAAHMMMMMMMMMMMM");
+    //         console.log(gameBoardSquared);
+    //     }
+    // }
+
+    // var clearRow = gameBoardSquared[0].map((col, i) => gameBoardSquared.map(row => row[i]));
+
+    // for(var i of clearRow){
+    //     var isFilled = false;
+    //     console.log(i);
+    //     if(i.every(k => k.squareColor !== "white")){
+    //         isFilled = true;
+    //     }
+    //     if(isFilled){
+    //         clearRow.splice(i, 1);
+    //         console.log("KAZAAAAAAAAHMMMMMMMMMMMM");
+    //         gameBoardSquared = clearRow;
+    //     }
+    // }
 }
