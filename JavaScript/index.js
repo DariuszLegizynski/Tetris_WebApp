@@ -291,14 +291,14 @@ function collisionDetection(myArr){
 }
 
 function clearRow(){
-
-    for(var rows = 0; rows < gameBoardSquared.length; rows++){ 
-        if(gameBoardSquared.every(k => k[rows].squareColor == "blue")){
-            console.log("ERFEACADSC");
-            gameBoardSquared[rows].splice(rows, 1);
-            console.log(gameBoardSquared);
+    for(var rows = 0; rows < gameBoardSquared.length; rows++){
+        while(gameBoardSquared.every(k => k[rows].squareColor == "blue")){
+            for(var i = 0; i < gameBoardSquared.length; i++){
+                console.log(gameBoardSquared[i].splice(rows, 1));
+            }
         }
     }
+}
     
     // for(var rows = 0; rows < gameBoardSquared.length; rows++){
     //     console.log(gameBoardSquared[rows]);
@@ -365,4 +365,3 @@ function clearRow(){
     //         gameBoardSquared = clearRow;
     //     }
     // }
-}
