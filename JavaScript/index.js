@@ -9,7 +9,7 @@ var clickButtons = document.querySelectorAll(".click-button");
 
 const gameBoardColumns = 20;
 const gameBoardRows = 10;
-const playableGameBoardLength = 8;
+const playableGameBoardLength = 18;
 
 var gameOver = false;
 
@@ -30,8 +30,8 @@ myInterval = setInterval(updateGameBoard, ms);  //1000/ms(=20) = 50 fps
 function updateGameBoard(){
     if(!gameOver){
         if(collisionDetection(tetrominoes)){
-            drawUpdatedGameBoard();
             clearRow();
+            drawUpdatedGameBoard();
             makeNewTestBlock();
         }
         else{
@@ -190,12 +190,16 @@ function makeNewTestBlock(){
     //     tetro[10].tempSquareColor = "yellow",
     // ];
 
-    var tetrominoO = [];
+    var tetrominoI = [];
 
-    tetrominoO[0] = [tetro[1], tetro[2], tetro[5], tetro[6]];
-    tetrominoO[1] = [tetro[1], tetro[2], tetro[5], tetro[6]];
-    tetrominoO[2] = [tetro[1], tetro[2], tetro[5], tetro[6]];
-    tetrominoO[3] = [tetro[1], tetro[2], tetro[5], tetro[6]];
+    tetrominoI[0] = [tetro[1], tetro[5], tetro[9], tetro[13]];
+    tetrominoI[1] = [tetro[8], tetro[9], tetro[10], tetro[11]];
+    tetrominoI[2] = [tetro[2], tetro[6], tetro[10], tetro[14]];
+    tetrominoI[3] = [tetro[4], tetro[5], tetro[6], tetro[7]];
+
+    // for(var i of tetrominoI){
+    //     i.squareColor == "magenta";
+    // }
 
     var tetrominoJ = [];
 
@@ -204,6 +208,28 @@ function makeNewTestBlock(){
     tetrominoJ[2] = [tetro[1], tetro[2], tetro[5], tetro[9]];
     tetrominoJ[3] = [tetro[0], tetro[4], tetro[5], tetro[6]];
 
+    var tetrominoL = [];
+
+    tetrominoL[0] = [tetro[0], tetro[1], tetro[5], tetro[9]];
+    tetrominoL[1] = [tetro[4], tetro[5], tetro[6], tetro[8]];
+    tetrominoL[2] = [tetro[1], tetro[5], tetro[9], tetro[10]];
+    tetrominoL[3] = [tetro[2], tetro[4], tetro[5], tetro[6]];
+
+    // for(var i of tetrominoL){
+    //     i.squareColor == "orange";
+    // }
+
+    var tetrominoO = [];
+
+    tetrominoO[0] = [tetro[1], tetro[2], tetro[5], tetro[6]];
+    tetrominoO[1] = [tetro[1], tetro[2], tetro[5], tetro[6]];
+    tetrominoO[2] = [tetro[1], tetro[2], tetro[5], tetro[6]];
+    tetrominoO[3] = [tetro[1], tetro[2], tetro[5], tetro[6]];
+
+    // for(var i of tetrominoO){
+    //     i.squareColor == "yellow";
+    // }
+
     var tetrominoS = [];
 
     tetrominoS[0] = [tetro[0], tetro[4], tetro[5], tetro[9]];
@@ -211,8 +237,34 @@ function makeNewTestBlock(){
     tetrominoS[2] = [tetro[1], tetro[5], tetro[6], tetro[10]];
     tetrominoS[3] = [tetro[1], tetro[2], tetro[4], tetro[5]];
 
-    var i = Math.floor(Math.random() * 4);
-    var tetrominoesArr = [tetrominoO[i]];//,tetrominoJ[i], tetrominoS[i]];
+    // for(var i of tetrominoS){
+    //     i.squareColor == "green";
+    // }
+
+    var tetrominoT = [];
+
+    tetrominoT[0] = [tetro[1], tetro[4], tetro[5], tetro[9]];
+    tetrominoT[1] = [tetro[4], tetro[5], tetro[6], tetro[9]];
+    tetrominoT[2] = [tetro[1], tetro[5], tetro[6], tetro[9]];
+    tetrominoT[3] = [tetro[1], tetro[4], tetro[5], tetro[6]];
+
+    // for(var i of tetrominoT){
+    //     i.squareColor == "purple";
+    // }
+
+    var tetrominoZ = [];
+
+    tetrominoZ[0] = [tetro[1], tetro[4], tetro[5], tetro[8]];
+    tetrominoZ[1] = [tetro[4], tetro[5], tetro[9], tetro[10]];
+    tetrominoZ[2] = [tetro[2], tetro[5], tetro[6], tetro[9]];
+    tetrominoZ[3] = [tetro[0], tetro[1], tetro[5], tetro[6]];
+
+    // for(var i of tetrominoZ){
+    //     i.squareColor == "red";
+    // }
+
+    var i = Math.floor(Math.random() * tetrominoZ.length);
+    var tetrominoesArr = [tetrominoO[i], tetrominoJ[i], tetrominoS[i], tetrominoZ[i], tetrominoT[i], tetrominoL[i], tetrominoI[i]];
 
     var x = Math.floor(Math.random() * tetrominoesArr.length);
     tetrominoes = tetrominoesArr[x];
@@ -267,7 +319,7 @@ function tetrominoesSlowFall(myArr){
 }
 
 function collisionDetection(myArr){
-    const topBoardBorder = 4;
+    const topBoardBorder = 3;
     for(var i of myArr){
         if(myArr.some(k => k.squareColor == gameBoardSquared[k.x][k.y].squareColor) && myArr.some(k => k.y < topBoardBorder)){
             console.log("Game Over");
@@ -280,11 +332,12 @@ function collisionDetection(myArr){
             }
             return true;
         }
-        else if(myArr.some(k => k.y > playableGameBoardLength)){
+        else if(myArr.some(k => k.y > playableGameBoardLength-1)){
             for(var i of myArr){
                 i.drawBlock();
                 gameBoardSquared[i.x][i.y] = i;
             }
+            return true;
         }
     }
     return false;
@@ -292,16 +345,13 @@ function collisionDetection(myArr){
 
 function clearRow(){
     for(var rows = 0; rows < gameBoardColumns - 1; rows++){
-        var iter = 0;
         while(gameBoardSquared.every(k => k[rows].squareColor == "blue")){
             for(var i = 0; i < gameBoardSquared.length; i++){
-                iter++;
                 gameBoardSquared[i].splice(rows, 1);
                 gameBoardSquared[i].unshift(new GridBlock("white", i, rows));
-                console.log(iter);
             }
-            console.log(gameBoardSquared);
-            // gameBoardSquared[rows].unshift([new GridBlock("red", 0, i), new GridBlock("red", 0, rows), new GridBlock("red", 0, rows), new GridBlock("red", 0, rows), new GridBlock("red", 0, rows), new GridBlock("red", 0, rows), new GridBlock("red", 0, rows), new GridBlock("red", 0, rows), new GridBlock("red", 0, rows), new GridBlock("red", 0, rows)]);
+        console.log("clearRow(): ");
+        console.log(gameBoardSquared);
         }
     }
 }
