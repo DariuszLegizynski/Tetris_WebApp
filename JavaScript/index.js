@@ -9,7 +9,7 @@ var clickButtons = document.querySelectorAll(".click-button");
 
 const gameBoardColumns = 20;
 const gameBoardRows = 10;
-const playableGameBoardLength = 12;
+const playableGameBoardLength = 18;
 
 var gameOver = false;
 
@@ -52,8 +52,13 @@ function startGame(key){
         makeNewRandomTetromino();
     }
 
-    else if (key==="ArrowUp")
+    else if (key==="ArrowUp"){
         rotateTetromino(tetrominoes);
+        //rotateTetromino2(tetrominoes);
+        //transpose(tetrominoes);
+        //reverseRows(tetrominoes);
+    }
+
 
     else if (key==="ArrowLeft"){
         moveTetrominoesLeft(tetrominoes);
@@ -162,7 +167,7 @@ var tetrominoO = [];
 var tetrominoS = [];
 var tetrominoT = [];
 var tetrominoZ = [];
-var currTetromino;
+// var currTetromino = [];
 
 //TODO: a table with all tetrominoes [J, L, T, etc] and then pick 1 by random and use it on the game board.
 
@@ -278,135 +283,157 @@ function makeNewRandomTetromino(){
     return tetrominoes;
 }
 
-function rotateTetromino(){
-    if(myArr.includes(tetrominoI[0])){
+function rotateTetromino(myArr){
+    // for(let i of myArr){
+    //     console.log(i.x);
+    //     console.log(i.y);
+    // }
+    
+
+    if(myArr == tetrominoI[0]){
+        for(let i of myArr){
+            i.undrawBlock();
+        }
         myArr = tetrominoI[1];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
+    } else if(myArr == tetrominoI[1]){
+        for(let i of myArr){
+            i.undrawBlock();
         }
-    } else if(myArr.includes(tetrominoI[1])){
         myArr = tetrominoI[2];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
+    } else if(myArr == tetrominoI[2]){
+        for(let i of myArr){
+            i.undrawBlock();
         }
-    } else if(myArr.includes(tetrominoI[2])){
         myArr = tetrominoI[3];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
+    } else if(myArr == tetrominoI[3]){
+        for(let i of myArr){
+            i.undrawBlock();
         }
-    } else if(myArr.includes(tetrominoI[3])){
         myArr = tetrominoI[0];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
+    } else if(myArr == tetrominoJ[0]){
+        for(let i of myArr){
+            i.undrawBlock();
         }
-    } else if(myArr.includes(tetrominoJ[0])){
         myArr = tetrominoJ[1];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoJ[1])){
+    } else if(myArr == tetrominoJ[1]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoJ[2];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoJ[2])){
+    } else if(myArr == tetrominoJ[2]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoJ[3];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoJ[3])){
+    } else if(myArr == tetrominoJ[3]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoJ[0];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoL[0])){
+    } else if(myArr == tetrominoL[0]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoL[1];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoL[1])){
+    } else if(myArr == tetrominoL[1]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoL[2];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoL[2])){
+    } else if(myArr == tetrominoL[2]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoL[3];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoL[3])){
+    } else if(myArr == tetrominoL[3]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoL[0];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoS[0])){
+    } else if(myArr == tetrominoO[0]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
+        myArr = tetrominoO[1];
+    } else if(myArr == tetrominoO[1]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
+        myArr = tetrominoO[2];
+    } else if(myArr == tetrominoO[2]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
+        myArr = tetrominoO[3];
+    } else if(myArr == tetrominoO[3]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
+        myArr = tetrominoO[0];
+    } else if(myArr == tetrominoS[0]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoS[1];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoS[1])){
+    } else if(myArr == tetrominoS[1]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoS[2];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoS[2])){
+    } else if(myArr == tetrominoS[2]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoS[3];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoS[3])){
+    } else if(myArr == tetrominoS[3]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoS[0];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoT[0])){
+    } else if(myArr == tetrominoT[0]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoT[1];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoT[1])){
+    } else if(myArr == tetrominoT[1]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoT[2];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoT[2])){
+    } else if(myArr == tetrominoT[2]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoT[3];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoT[3])){
+    } else if(myArr == tetrominoT[3]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoT[0];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoZ[0])){
+    } else if(myArr == tetrominoZ[0]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoZ[1];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
-    } else if(myArr.includes(tetrominoZ[1])){
+    } else if(myArr == tetrominoZ[1]){
+            for(let i of myArr){
+        i.undrawBlock();
+    }
         myArr = tetrominoZ[2];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
+    } else if(myArr == tetrominoZ[2]){
+        for(let i of myArr){
+            i.undrawBlock();
         }
-    } else if(myArr.includes(tetrominoZ[2])){
         myArr = tetrominoZ[3];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
+    } else if(myArr == tetrominoZ[3]){
+        for(let i of myArr){
+            i.undrawBlock();
         }
-    } else if(myArr.includes(tetrominoZ[3])){
         myArr = tetrominoZ[0];
-        for(var k of (tetrominoI[1])){
-            k.drawBlock();
-        }
     }
 
-    // tetrominoJ = [];
-    // tetrominoL = [];
-    // tetrominoO = [];
-    // tetrominoS = [];
-    // tetrominoT = [];
-    // tetrominoZ = [];
+    tetrominoes = myArr;
+    return tetrominoes;
 }
 
 function moveTetrominoesLeft(myArr){
@@ -417,10 +444,10 @@ function moveTetrominoesLeft(myArr){
         }
     }
     else{
-        for(var i of myArr){
+        for(let i of myArr){
             i.undrawBlock();
         }
-        for(var i of myArr){
+        for(let i of myArr){
             i.moveLeft();
             i.drawBlock();
         }
@@ -446,7 +473,7 @@ function moveTetrominoesRight(myArr){
 }
 
 function tetrominoesSlowFall(myArr){
-
+console.log(myArr);
     for(let i of myArr){
         i.undrawBlock();
     }
