@@ -9,7 +9,7 @@ var clickButtons = document.querySelectorAll(".click-button");
 
 const gameBoardColumns = 20;
 const gameBoardRows = 10;
-const playableGameBoardLength = 18;
+const playableGameBoardLength = 12;
 
 var gameOver = false;
 
@@ -32,7 +32,7 @@ function updateGameBoard(){
         if(collisionDetection(tetrominoes)){
             clearRow();
             drawUpdatedGameBoard();
-            makeNewTestBlock();
+            makeNewRandomTetromino();
         }
         else{
             tetrominoesSlowFall(tetrominoes);
@@ -49,12 +49,11 @@ function startGame(key){
 
     if (key === "Enter"){
         drawSquaredGameBoard();
-        makeNewTestBlock();
+        makeNewRandomTetromino();
     }
 
     else if (key==="ArrowUp")
-        //rotate
-        return;
+        rotateTetromino(tetrominoes);
 
     else if (key==="ArrowLeft"){
         moveTetrominoesLeft(tetrominoes);
@@ -156,10 +155,18 @@ class BasicBlock extends SimpleBlock{
 
 //Declaration of variables, of a [4x4] tetromino array. Excluding the cells, that will never be used (like tetro3)
 var tetrominoes = [];
+var tetrominoI = [];
+var tetrominoJ = [];
+var tetrominoL = [];
+var tetrominoO = [];
+var tetrominoS = [];
+var tetrominoT = [];
+var tetrominoZ = [];
+var currTetromino;
 
 //TODO: a table with all tetrominoes [J, L, T, etc] and then pick 1 by random and use it on the game board.
 
-function makeNewTestBlock(){
+function makeNewRandomTetromino(){
     var tetro = [];
     tetro[0] = new BasicBlock("blue", 4, 0);
     tetro[1] = new BasicBlock("blue", 5, 0);
@@ -190,7 +197,7 @@ function makeNewTestBlock(){
     //     tetro[10].tempSquareColor = "yellow",
     // ];
 
-    var tetrominoI = [];
+    // var tetrominoI = [];
 
     tetrominoI[0] = [tetro[1], tetro[5], tetro[9], tetro[13]];
     tetrominoI[1] = [tetro[8], tetro[9], tetro[10], tetro[11]];
@@ -201,14 +208,14 @@ function makeNewTestBlock(){
     //     i.squareColor == "magenta";
     // }
 
-    var tetrominoJ = [];
+    // var tetrominoJ = [];
 
     tetrominoJ[0] = [tetro[1], tetro[5], tetro[8], tetro[9]];
     tetrominoJ[1] = [tetro[6], tetro[4], tetro[5], tetro[10]];
     tetrominoJ[2] = [tetro[1], tetro[2], tetro[5], tetro[9]];
     tetrominoJ[3] = [tetro[0], tetro[4], tetro[5], tetro[6]];
 
-    var tetrominoL = [];
+    // var tetrominoL = [];
 
     tetrominoL[0] = [tetro[0], tetro[1], tetro[5], tetro[9]];
     tetrominoL[1] = [tetro[4], tetro[5], tetro[6], tetro[8]];
@@ -219,7 +226,7 @@ function makeNewTestBlock(){
     //     i.squareColor == "orange";
     // }
 
-    var tetrominoO = [];
+    // var tetrominoO = [];
 
     tetrominoO[0] = [tetro[1], tetro[2], tetro[5], tetro[6]];
     tetrominoO[1] = [tetro[1], tetro[2], tetro[5], tetro[6]];
@@ -230,7 +237,7 @@ function makeNewTestBlock(){
     //     i.squareColor == "yellow";
     // }
 
-    var tetrominoS = [];
+    // var tetrominoS = [];
 
     tetrominoS[0] = [tetro[0], tetro[4], tetro[5], tetro[9]];
     tetrominoS[1] = [tetro[5], tetro[6], tetro[8], tetro[9]];
@@ -241,7 +248,7 @@ function makeNewTestBlock(){
     //     i.squareColor == "green";
     // }
 
-    var tetrominoT = [];
+    // var tetrominoT = [];
 
     tetrominoT[0] = [tetro[1], tetro[4], tetro[5], tetro[9]];
     tetrominoT[1] = [tetro[4], tetro[5], tetro[6], tetro[9]];
@@ -252,7 +259,7 @@ function makeNewTestBlock(){
     //     i.squareColor == "purple";
     // }
 
-    var tetrominoZ = [];
+    // var tetrominoZ = [];
 
     tetrominoZ[0] = [tetro[1], tetro[4], tetro[5], tetro[8]];
     tetrominoZ[1] = [tetro[4], tetro[5], tetro[9], tetro[10]];
@@ -265,10 +272,74 @@ function makeNewTestBlock(){
 
     var i = Math.floor(Math.random() * tetrominoZ.length);
     var tetrominoesArr = [tetrominoO[i], tetrominoJ[i], tetrominoS[i], tetrominoZ[i], tetrominoT[i], tetrominoL[i], tetrominoI[i]];
+    
+    for(var k of tetrominoesArr){
+        console.log(k);
+    }
+    
 
     var x = Math.floor(Math.random() * tetrominoesArr.length);
     tetrominoes = tetrominoesArr[x];
     return tetrominoes;
+}
+
+function rotateTetromino(myArr){
+    if(myArr == tetrominoI[0]){
+        myArr = tetrominoI[1];
+    } else if(myArr == tetrominoI[1]){
+        myArr = tetrominoI[2];
+    } else if(myArr == tetrominoI[2]){
+        myArr = tetrominoI[3];
+    } else if(myArr == tetrominoI[3]){
+        myArr = tetrominoI[0];
+    } else if(myArr == tetrominoJ[0]){
+        myArr = tetrominoJ[1];
+    } else if(myArr == tetrominoJ[1]){
+        myArr = tetrominoJ[2];
+    } else if(myArr == tetrominoJ[2]){
+        myArr = tetrominoJ[3];
+    } else if(myArr == tetrominoJ[3]){
+        myArr = tetrominoJ[0];
+    } else if(myArr == tetrominoL[0]){
+        myArr = tetrominoL[1];
+    } else if(myArr == tetrominoL[1]){
+        myArr = tetrominoL[2];
+    } else if(myArr == tetrominoL[2]){
+        myArr = tetrominoL[3];
+    } else if(myArr == tetrominoL[3]){
+        myArr = tetrominoL[0];
+    } else if(myArr == tetrominoS[0]){
+        myArr = tetrominoS[1];
+    } else if(myArr == tetrominoS[1]){
+        myArr = tetrominoS[2];
+    } else if(myArr == tetrominoS[2]){
+        myArr = tetrominoS[3];
+    } else if(myArr == tetrominoS[3]){
+        myArr = tetrominoS[0];
+    } else if(myArr == tetrominoT[0]){
+        myArr = tetrominoT[1];
+    } else if(myArr == tetrominoT[1]){
+        myArr = tetrominoT[2];
+    } else if(myArr == tetrominoT[2]){
+        myArr = tetrominoT[3];
+    } else if(myArr == tetrominoT[3]){
+        myArr = tetrominoT[0];
+    } else if(myArr == tetrominoZ[0]){
+        myArr = tetrominoZ[1];
+    } else if(myArr == tetrominoZ[1]){
+        myArr = tetrominoZ[2];
+    } else if(myArr == tetrominoZ[2]){
+        myArr = tetrominoZ[3];
+    } else if(myArr == tetrominoZ[3]){
+        myArr = tetrominoZ[0];
+    }
+
+    // tetrominoJ = [];
+    // tetrominoL = [];
+    // tetrominoO = [];
+    // tetrominoS = [];
+    // tetrominoT = [];
+    // tetrominoZ = [];
 }
 
 function moveTetrominoesLeft(myArr){
@@ -348,6 +419,8 @@ function clearRow(){
         while(gameBoardSquared.every(k => k[rows].squareColor == "blue")){
             for(var i = 0; i < gameBoardSquared.length; i++){
                 gameBoardSquared[i].splice(rows, 1);
+            }
+            for(var i = 0; i < gameBoardSquared.length; i++){
                 gameBoardSquared[i].unshift(new GridBlock("white", i, rows));
             }
         console.log("clearRow(): ");
