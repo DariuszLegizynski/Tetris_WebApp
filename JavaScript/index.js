@@ -29,13 +29,14 @@ myInterval = setInterval(updateGameBoard, ms);  //1000/ms(=20) = 50 fps
 
 function updateGameBoard(){
     if(!gameOver){
-        if(collisionDetection(tetrominoes)){
+        if(collisionDetection()){
             clearRow();
             drawUpdatedGameBoard();
             makeNewRandomTetromino();
         }
         else{
-            tetrominoesSlowFall(tetrominoes);
+            //rotateTetromino();
+            //tetrominoesSlowFall();
             drawUpdatedGameBoard();
         }
     }
@@ -50,21 +51,19 @@ function startGame(key){
     if (key === "Enter"){
         drawSquaredGameBoard();
         makeNewRandomTetromino();
-        tetrominoesSlowFall(tetrominoes);
-        rotateTetromino();
     }
 
     else if (key==="ArrowUp"){
+        tetrominoesSlowFall();
         rotateTetromino();
     }
 
-
     else if (key==="ArrowLeft"){
-        moveTetrominoesLeft(tetrominoes);
+        moveTetrominoesLeft();
     }
 
     else if (key==="ArrowRight"){
-        moveTetrominoesRight(tetrominoes);
+        moveTetrominoesRight();
     }
 
     else if (key==="ArrowDown"){
@@ -108,7 +107,7 @@ function drawSquaredGameBoard() {
     }
 }
 
-// var clearRow = (myArr, n) => myArr.map(x => for(x[n] of gameBoardSquared));
+// var clearRow = (tetrominoes, n) => tetrominoes.map(x => for(x[n] of gameBoardSquared));
 
 function drawUpdatedGameBoard(){
 
@@ -285,217 +284,135 @@ function makeNewRandomTetromino(){
 
 function rotateTetromino(){
 
-    console.log("Input: ");
-    console.log(tetrominoes);
-
     for(let i of tetrominoes){
         i.undrawBlock();
     }
 
     if(tetrominoes == tetrominoI[0]){
         tetrominoes = tetrominoI[1];
-        return tetrominoes;
     } else if(tetrominoes == tetrominoI[1]){
         tetrominoes = tetrominoI[2];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoI[2]){
         tetrominoes = tetrominoI[3];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoI[3]){
         tetrominoes = tetrominoI[0];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoJ[0]){
         tetrominoes = tetrominoJ[1];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoJ[1]){
         tetrominoes = tetrominoJ[2];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoJ[2]){
         tetrominoes = tetrominoJ[3];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoJ[3]){
         tetrominoes = tetrominoJ[0];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoL[0]){
         tetrominoes = tetrominoL[1];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoL[1]){
         tetrominoes = tetrominoL[2];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoL[2]){
         tetrominoes = tetrominoL[3];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoL[3]){
         tetrominoes = tetrominoL[0];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoO[0]){
         tetrominoes = tetrominoO[1];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoO[1]){
         tetrominoes = tetrominoO[2];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoO[2]){
         tetrominoes = tetrominoO[3];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoO[3]){
         tetrominoes = tetrominoO[0];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoS[0]){
         tetrominoes = tetrominoS[1];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoS[1]){
         tetrominoes = tetrominoS[2];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoS[2]){
         tetrominoes = tetrominoS[3];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoS[3]){
         tetrominoes = tetrominoS[0];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoT[0]){
         tetrominoes = tetrominoT[1];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoT[1]){
         tetrominoes = tetrominoT[2];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoT[2]){
         tetrominoes = tetrominoT[3];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoT[3]){
         tetrominoes = tetrominoT[0];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoZ[0]){
         tetrominoes = tetrominoZ[1];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoZ[1]){
         tetrominoes = tetrominoZ[2];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoZ[2]){
         tetrominoes = tetrominoZ[3];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
     } else if(tetrominoes == tetrominoZ[3]){
         tetrominoes = tetrominoZ[0];
-        console.log("output: ")
-        console.log(tetrominoes);
-                return tetrominoes;
+    }
+    for(let i of tetrominoes){
+        i.drawBlock();
     }
 }
 
-function moveTetrominoesLeft(myArr){
+function moveTetrominoesLeft(){
 
-    if(myArr.some(k => k.x - 1 < 0) || myArr.some(k => k.squareColor == gameBoardSquared[k.x-1][k.y].squareColor)){
-        for(let i of myArr){
+    if(tetrominoes.some(k => k.x - 1 < 0) || tetrominoes.some(k => k.squareColor == gameBoardSquared[k.x-1][k.y].squareColor)){
+        for(let i of tetrominoes){
             i.drawBlock();
         }
     }
     else{
-        for(let i of myArr){
+        for(let i of tetrominoes){
             i.undrawBlock();
         }
-        for(let i of myArr){
+        for(let i of tetrominoes){
             i.moveLeft();
             i.drawBlock();
         }
     }
 }
 
-function moveTetrominoesRight(myArr){
+function moveTetrominoesRight(){
     
-    if(myArr.some(k => k.x + 1 > gameBoardSquared.length-1) || myArr.some(k => k.squareColor == gameBoardSquared[k.x+1][k.y].squareColor)){
-        for(let i of myArr){
+    if(tetrominoes.some(k => k.x + 1 > gameBoardSquared.length-1) || tetrominoes.some(k => k.squareColor == gameBoardSquared[k.x+1][k.y].squareColor)){
+        for(let i of tetrominoes){
             i.drawBlock();
         }
     }
     else{
-        for(var i of myArr){
+        for(var i of tetrominoes){
             i.undrawBlock();
         }
-        for(var i of myArr){
+        for(var i of tetrominoes){
             i.moveRight();
             i.drawBlock();
         }
     }
 }
 
-function tetrominoesSlowFall(myArr){
+function tetrominoesSlowFall(){
 
-    for(let i of myArr){
+    for(let i of tetrominoes){
         i.undrawBlock();
     }
-    for(let i of myArr){
+    for(let i of tetrominoes){
         i.slowFall();
         i.drawBlock();
     }
 }
 
-function collisionDetection(myArr){
+function collisionDetection(){
     const topBoardBorder = 3;
-    for(var i of myArr){
-        if(myArr.some(k => k.squareColor == gameBoardSquared[k.x][k.y].squareColor) && myArr.some(k => k.y < topBoardBorder)){
+    for(var i of tetrominoes){
+        if(tetrominoes.some(k => k.squareColor == gameBoardSquared[k.x][k.y].squareColor) && tetrominoes.some(k => k.y < topBoardBorder)){
             console.log("Game Over");
             gameOver = true;
         }
-        if(myArr.some(k => k.squareColor == gameBoardSquared[k.x][k.y+1].squareColor)){
-            for(var i of myArr){
+        if(tetrominoes.some(k => k.squareColor == gameBoardSquared[k.x][k.y+1].squareColor)){
+            for(var i of tetrominoes){
                 i.drawBlock();
                 gameBoardSquared[i.x][i.y] = i;
             }
             return true;
         }
-        else if(myArr.some(k => k.y > playableGameBoardLength-1)){
-            for(var i of myArr){
+        else if(tetrominoes.some(k => k.y > playableGameBoardLength-1)){
+            for(var i of tetrominoes){
                 i.drawBlock();
                 gameBoardSquared[i.x][i.y] = i;
             }
