@@ -273,65 +273,132 @@ function makeNewRandomTetromino(){
     var i = Math.floor(Math.random() * tetrominoZ.length);
     var tetrominoesArr = [tetrominoO[i], tetrominoJ[i], tetrominoS[i], tetrominoZ[i], tetrominoT[i], tetrominoL[i], tetrominoI[i]];
     
-    for(var k of tetrominoesArr){
-        console.log(k);
-    }
-    
-
     var x = Math.floor(Math.random() * tetrominoesArr.length);
     tetrominoes = tetrominoesArr[x];
     return tetrominoes;
 }
 
-function rotateTetromino(myArr){
-    if(myArr == tetrominoI[0]){
+function rotateTetromino(){
+    if(myArr.includes(tetrominoI[0])){
         myArr = tetrominoI[1];
-    } else if(myArr == tetrominoI[1]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoI[1])){
         myArr = tetrominoI[2];
-    } else if(myArr == tetrominoI[2]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoI[2])){
         myArr = tetrominoI[3];
-    } else if(myArr == tetrominoI[3]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoI[3])){
         myArr = tetrominoI[0];
-    } else if(myArr == tetrominoJ[0]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoJ[0])){
         myArr = tetrominoJ[1];
-    } else if(myArr == tetrominoJ[1]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoJ[1])){
         myArr = tetrominoJ[2];
-    } else if(myArr == tetrominoJ[2]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoJ[2])){
         myArr = tetrominoJ[3];
-    } else if(myArr == tetrominoJ[3]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoJ[3])){
         myArr = tetrominoJ[0];
-    } else if(myArr == tetrominoL[0]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoL[0])){
         myArr = tetrominoL[1];
-    } else if(myArr == tetrominoL[1]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoL[1])){
         myArr = tetrominoL[2];
-    } else if(myArr == tetrominoL[2]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoL[2])){
         myArr = tetrominoL[3];
-    } else if(myArr == tetrominoL[3]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoL[3])){
         myArr = tetrominoL[0];
-    } else if(myArr == tetrominoS[0]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoS[0])){
         myArr = tetrominoS[1];
-    } else if(myArr == tetrominoS[1]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoS[1])){
         myArr = tetrominoS[2];
-    } else if(myArr == tetrominoS[2]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoS[2])){
         myArr = tetrominoS[3];
-    } else if(myArr == tetrominoS[3]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoS[3])){
         myArr = tetrominoS[0];
-    } else if(myArr == tetrominoT[0]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoT[0])){
         myArr = tetrominoT[1];
-    } else if(myArr == tetrominoT[1]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoT[1])){
         myArr = tetrominoT[2];
-    } else if(myArr == tetrominoT[2]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoT[2])){
         myArr = tetrominoT[3];
-    } else if(myArr == tetrominoT[3]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoT[3])){
         myArr = tetrominoT[0];
-    } else if(myArr == tetrominoZ[0]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoZ[0])){
         myArr = tetrominoZ[1];
-    } else if(myArr == tetrominoZ[1]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoZ[1])){
         myArr = tetrominoZ[2];
-    } else if(myArr == tetrominoZ[2]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoZ[2])){
         myArr = tetrominoZ[3];
-    } else if(myArr == tetrominoZ[3]){
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
+    } else if(myArr.includes(tetrominoZ[3])){
         myArr = tetrominoZ[0];
+        for(var k of (tetrominoI[1])){
+            k.drawBlock();
+        }
     }
 
     // tetrominoJ = [];
