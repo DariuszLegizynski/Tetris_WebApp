@@ -35,7 +35,6 @@ function updateGameBoard(){
             makeNewRandomTetromino();
         }
         else{
-            //rotateTetromino();
             //tetrominoesSlowFall();
             drawUpdatedGameBoard();
         }
@@ -54,7 +53,6 @@ function startGame(key){
     }
 
     else if (key==="ArrowUp"){
-        tetrominoesSlowFall();
         rotateTetromino();
     }
 
@@ -67,14 +65,13 @@ function startGame(key){
     }
 
     else if (key==="ArrowDown"){
-        updateGameBoard();
+        tetrominoesSlowFall();
     }
     
     else
         console.log("Psst, press 'Enter' to start");
 }
 
-//Optional: TODO: a dark game board, where only the tetrominoes and/or the borders of the game board would glow
 class SimpleBlock{
     constructor(tempSquareColor, boardPosX, boardPosY){
         this.x = boardPosX;
@@ -97,7 +94,6 @@ class GridBlock extends SimpleBlock{
 
 var gameBoardSquared = [];
 
-//Make the game board squared (in the canvas the y is row and the x is column)
 function drawSquaredGameBoard() {
     for(var row = 0; row < gameBoardRows; row++){
         gameBoardSquared[row] = [];
@@ -165,9 +161,6 @@ var tetrominoO = [];
 var tetrominoS = [];
 var tetrominoT = [];
 var tetrominoZ = [];
-// var currTetromino = [];
-
-//TODO: a table with all tetrominoes [J, L, T, etc] and then pick 1 by random and use it on the game board.
 
 function makeNewRandomTetromino(){
     var tetro = [];
