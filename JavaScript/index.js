@@ -271,8 +271,6 @@ function makeNewRandomTetromino(){
 
     var x = Math.floor(Math.random() * tetrominoesArr.length);
     tetrominoes = tetrominoesArr[x];
-    console.log(tetrominoes);
-    return tetrominoes;
 }
 
 function rotateTetromino(){
