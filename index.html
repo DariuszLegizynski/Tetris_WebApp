@@ -24,31 +24,39 @@
     <div class="container">
         <div class="mainView">
             <div class="row">
-                <div class="col-lg-6 col-md-8">
-                    <h1>Welcome to my Tetris game</h1>
-                    <div class="gameScreen">
+                <h1 style="text-align:center">Welcome to my Tetris game</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-8 col-sm-12">
+                    <div class="row">
+                        <h2 id="score">SCORE: 0</h2>
+                    </div>
+                    <div class="controllButtons">
+                        <div class="row justify-content-around">
+                            <button type="button" class="btn click-button btn-outline-secondary">Enter</button>
+                        </div>
+                        <div class="row justify-content-around">
+                            <button type="button" class="btn click-button btn-outline-secondary">ArrowLeft</button>
+                            <button type="button" class="btn click-button btn-outline-secondary">y</button>
+                            <button type="button" class="btn click-button btn-outline-secondary">ArrowRight</button>
+                        </div>
+                        <div class="row justify-content-around">
+                            <button type="button" class="btn click-button btn-outline-secondary">ArrowDown</button>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around gameScreen">
                         <canvas id="gameBoardCanvas" width="400" height="800" style="border: 1px solid black;">
                         </canvas>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-3">
+                <div class="col-lg-4 col-md-3 col-sm-0">
                     <div class="Instruction">
                         <h2>Instruction:</h2>
-                        <p>Enter: Start game</p>
+                        <p>Enter: start game</p>
                         <p>Left Arrow: move left</p>
                         <p>Right Arrow: move right</p>
-                        <p>Down Arrow: Push down</p>
-                        <p>Z: Rotate</p>
-                        <h2  class="score">SCORE: 0</h2>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3">
-                    <div class="controllButtons">
-                        <button type="button" class="btn click-button btn-outline-secondary">Start</button>
-                        <button type="button" class="btn click-button btn-outline-secondary">Rotate</button>
-                        <button type="button" class="btn click-button btn-outline-secondary">Left</button>
-                        <button type="button" class="btn click-button btn-outline-secondary">Right</button>
-                        <button type="button" class="btn click-button btn-outline-secondary">Drop</button>
+                        <p>Down Arrow: push down</p>
+                        <p>Z: rotate</p>
                     </div>
                 </div>
             </div>

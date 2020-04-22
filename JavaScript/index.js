@@ -18,7 +18,7 @@ let isCollision = false;
 
 for (let i = 0; i < clickButtons.length; i++){
     clickButtons[i].addEventListener("click", function(){
-        let buttonClickedOn = "Arrow" + this.innerText;
+        let buttonClickedOn = this.innerText;
         startGame(buttonClickedOn);
     });
 }
@@ -59,12 +59,12 @@ function startGame(key){
         makeNewRandomTetromino();
     }
 
-    else if (key==="y"){
-        rotateTetromino();
-    }
-
     else if (key==="ArrowLeft"){
         moveTetrominoesLeft();
+    }
+
+    else if (key==="y"){
+        rotateTetromino();
     }
 
     else if (key==="ArrowRight"){
