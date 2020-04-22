@@ -1,22 +1,24 @@
 const squareSize = 40;
-var ms = 500;
+const ms = 500;
 
 //getting the canvases properties
-var canvas = document.getElementById("gameBoardCanvas");
-var ctx = canvas.getContext("2d");
+const canvas = document.getElementById("gameBoardCanvas");
+const ctx = canvas.getContext("2d");
 
-var clickButtons = document.querySelectorAll(".click-button");
+const clickButtons = document.querySelectorAll(".click-button");
 
 const gameBoardColumns = 20;
 const gameBoardRows = 10;
 const playableGameBoardLength = 18;
 
-var gameOver = false;
-var isCollision = false;
+let = gameScore = 0;
 
-for (var i = 0; i < clickButtons.length; i++){
+let gameOver = false;
+let isCollision = false;
+
+for (let i = 0; i < clickButtons.length; i++){
     clickButtons[i].addEventListener("click", function(){
-        var buttonClickedOn = "Arrow" + this.innerText;
+        let buttonClickedOn = "Arrow" + this.innerText;
         startGame(buttonClickedOn);
     });
 }
@@ -25,8 +27,9 @@ document.addEventListener("keydown", function(event){
     startGame(event.key);
 });
 
-var myInterval;
-myInterval = setInterval(updateGameBoard, ms);  //1000/ms(=20) = 50 fps
+const myInterval = setInterval(updateGameBoard, ms);  //1000/ms(=20) = 50 fps
+
+alert("Instructions\nEnter: Start game\nLeft Arrow: move left\nRight Arrow: move right\nDown Arrow: Push down\nZ: Rotate");
 
 function updateGameBoard(){
     if(!gameOver){
@@ -45,19 +48,18 @@ function updateGameBoard(){
     else{
         clearInterval(myInterval);
         alert("Game Over");
+        gameOver = false;
     }
-
 }
 
 function startGame(key){
 
     if (key === "Enter"){
-        myInterval;
         drawSquaredGameBoard();
         makeNewRandomTetromino();
     }
 
-    else if (key==="ArrowUp"){
+    else if (key==="y"){
         rotateTetromino();
     }
 
@@ -97,12 +99,12 @@ class GridBlock extends SimpleBlock{
     }
 }
 
-var gameBoardSquared = [];
+let gameBoardSquared = [];
 
 function drawSquaredGameBoard() {
-    for(var row = 0; row < gameBoardRows; row++){
+    for(let row = 0; row < gameBoardRows; row++){
         gameBoardSquared[row] = [];
-        for(var col = 0; col < gameBoardColumns; col++){
+        for(let col = 0; col < gameBoardColumns; col++){
             gameBoardSquared[row][col] = new GridBlock("white", row, col);
         }
     }
@@ -110,8 +112,8 @@ function drawSquaredGameBoard() {
 
 function drawUpdatedGameBoard(){
 
-    for(var m of gameBoardSquared){
-        for(var n of m){
+    for(let m of gameBoardSquared){
+        for(let n of m){
             if(n.squareColor !== "white"){
                 n.drawBlock();
             }
@@ -154,15 +156,15 @@ class BasicBlock extends SimpleBlock{
 }
 
 //Tetrominos
-var tetrominoes = [];
-var tetrominoI = [];
-var tetrominoJ = [];
-var tetrominoL = [];
-var tetrominoO = [];
-var tetrominoS = [];
-var tetrominoT = [];
-var tetrominoZ = [];
-var tetro = [];
+let tetrominoes = [];
+let tetrominoI = [];
+let tetrominoJ = [];
+let tetrominoL = [];
+let tetrominoO = [];
+let tetrominoS = [];
+let tetrominoT = [];
+let tetrominoZ = [];
+let tetro = [];
 
 
 function makeNewRandomTetromino(){
@@ -218,15 +220,15 @@ function makeNewRandomTetromino(){
     tetrominoZ[2] = [tetro[2], tetro[5], tetro[6], tetro[9]];
     tetrominoZ[3] = [tetro[0], tetro[1], tetro[5], tetro[6]];
 
-    var i = Math.floor(Math.random() * tetrominoZ.length);
-    var tetrominoesArr = [tetrominoO[i], tetrominoJ[i], tetrominoS[i], tetrominoZ[i], tetrominoT[i], tetrominoL[i], tetrominoI[i]];
+    let i = Math.floor(Math.random() * tetrominoZ.length);
+    let tetrominoesArr = [tetrominoO[i], tetrominoJ[i], tetrominoS[i], tetrominoZ[i], tetrominoT[i], tetrominoL[i], tetrominoI[i]];
 
-    var x = Math.floor(Math.random() * tetrominoesArr.length);
+    let x = Math.floor(Math.random() * tetrominoesArr.length);
     tetrominoes = tetrominoesArr[x];
 }
 
 function colourTetromino(){
-    for(var i = 0; i < tetrominoes.length; i++){
+    for(let i = 0; i < tetrominoes.length; i++){
         if(tetrominoes == tetrominoI[i]){
             for(let i of tetrominoI){
                 for (let j of i){
@@ -388,21 +390,21 @@ function moveTetrominoesRight(){
 
 function tetrominoesSlowFall(){
     const topBoardBorder = 3;
-    for(var i of tetrominoes){
+    for(let i of tetrominoes){
         if(tetrominoes.some(k => k.squareColor !== "white" && gameBoardSquared[k.x][k.y].squareColor !== "white" && tetrominoes.some(k => k.y < topBoardBorder))){
             console.log("Game Over");
             gameOver = true;
         }
     }
     if(tetrominoes.some(k => k.y > playableGameBoardLength-1)){
-        for(var i of tetrominoes){
+        for(let i of tetrominoes){
             i.drawBlock();
             gameBoardSquared[i.x][i.y] = i;
         }
         isCollision = true;
     }
     else if(tetrominoes.some(k => k.squareColor !== "white" && gameBoardSquared[k.x][k.y+1].squareColor !== "white")){
-        for(var i of tetrominoes){
+        for(let i of tetrominoes){
             i.drawBlock();
             gameBoardSquared[i.x][i.y] = i;
         }
@@ -418,14 +420,18 @@ function tetrominoesSlowFall(){
 }
 
 function clearRow(){
-    for(var rows = 0; rows < gameBoardColumns - 1; rows++){
+    for(let rows = 0; rows < gameBoardColumns - 1; rows++){
         while(gameBoardSquared.every(k => k[rows].squareColor !== "white")){
-            for(var i = 0; i < gameBoardSquared.length; i++){
+            for(let i = 0; i < gameBoardSquared.length; i++){
                 gameBoardSquared[i].splice(rows, 1);
+
             }
-            for(var i = 0; i < gameBoardSquared.length; i++){
+            for(let i = 0; i < gameBoardSquared.length; i++){
                 gameBoardSquared[i].unshift(new GridBlock("white", i, rows));
             }
+        gameScore += 100;
+        const gameScoreElement = document.getElementById("score");
+        gameScoreElement.innerHTML = "SCORE: " + gameScore;
         console.log("clearRow(): ");
         console.log(gameBoardSquared);
         }

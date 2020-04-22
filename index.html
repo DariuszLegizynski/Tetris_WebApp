@@ -23,26 +23,28 @@
 
     <div class="container">
         <div class="mainView">
-        <h1>Welcome to my Tetris game</h1>
             <div class="row">
                 <div class="col-lg-6 col-md-8">
+                    <h1>Welcome to my Tetris game</h1>
                     <div class="gameScreen">
                         <canvas id="gameBoardCanvas" width="400" height="800" style="border: 1px solid black;">
-                            
                         </canvas>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-3">
-                    <div class="scoreTableMenu">
-                        <h2>Instructions</h2>
+                    <div class="Instruction">
+                        <h2>Instruction:</h2>
+                        <p>Enter: Start game</p>
                         <p>Left Arrow: move left</p>
                         <p>Right Arrow: move right</p>
-                        <p>Up Arrow: Rotate</p>
-                        <p>Space Bar: Push down</p>
+                        <p>Down Arrow: Push down</p>
+                        <p>Z: Rotate</p>
+                        <h2  class="score">SCORE: 0</h2>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3">
                     <div class="controllButtons">
+                        <button type="button" class="btn click-button btn-outline-secondary">Start</button>
                         <button type="button" class="btn click-button btn-outline-secondary">Rotate</button>
                         <button type="button" class="btn click-button btn-outline-secondary">Left</button>
                         <button type="button" class="btn click-button btn-outline-secondary">Right</button>
