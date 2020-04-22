@@ -12,7 +12,6 @@ const gameBoardRows = 10;
 const playableGameBoardLength = 18;
 
 var gameOver = false;
-var collision = false;
 
 for (var i = 0; i < clickButtons.length; i++){
     clickButtons[i].addEventListener("click", function(){
@@ -31,13 +30,13 @@ myInterval = setInterval(updateGameBoard, ms);  //1000/ms(=20) = 50 fps
 function updateGameBoard(){
     if(!gameOver){
         colourTetromino();
-        if(collision){
+        if(collisionDetection()){
             clearRow();
             drawUpdatedGameBoard();
             makeNewRandomTetromino();
         }
         else{
-            tetrominoesSlowFall();
+            //tetrominoesSlowFall();
             drawUpdatedGameBoard();
         }
     }
@@ -60,15 +59,28 @@ function startGame(key){
     }
 
     else if (key==="ArrowLeft"){
+        // for(let i of tetro){
+        //     i.moveLeft();
+        //     i.undrawBlock();
+        // }
         moveTetrominoesLeft();
     }
 
     else if (key==="ArrowRight"){
+        // for(let i of tetro){
+        //     i.undrawBlock();
+        //     i.moveRight();
+        // }
         moveTetrominoesRight();
     }
 
     else if (key==="ArrowDown"){
-        updateGameBoard();
+        tetrominoesSlowFall();
+        // for(let i of tetro){
+        //     i.undrawBlock();
+        //     i.slowFall();
+        // }
+        //updateGameBoard();
     }
     
     else
@@ -390,22 +402,6 @@ function moveTetrominoesRight(){
 }
 
 function tetrominoesSlowFall(){
-    if(tetrominoes.some(k => k.squareColor !== "white" && gameBoardSquared[k.x][k.y+1].squareColor !== "white")){
-        for(var i of tetrominoes){
-            i.drawBlock();
-            gameBoardSquared[i.x][i.y] = i;
-        }
-        collision = true;
-        // return collision;
-    }
-    else if(tetrominoes.some(k => k.y > playableGameBoardLength-1)){
-        for(var i of tetrominoes){
-            i.drawBlock();
-            gameBoardSquared[i.x][i.y] = i;
-        }
-        collision = true;
-        // return collision;
-    }
     for(let i of tetro){
         i.undrawBlock();
     }
@@ -415,17 +411,31 @@ function tetrominoesSlowFall(){
     for(let i of tetrominoes){
         i.drawBlock();
     }
-    collision = false;
 }
 
-function gameBoardFull(){
+function collisionDetection(){
     const topBoardBorder = 3;
     for(var i of tetrominoes){
         if(tetrominoes.some(k => k.squareColor !== "white" && gameBoardSquared[k.x][k.y].squareColor !== "white" && tetrominoes.some(k => k.y < topBoardBorder))){
             console.log("Game Over");
             gameOver = true;
         }
+        if(tetrominoes.some(k => k.squareColor !== "white" && gameBoardSquared[k.x][k.y+1].squareColor !== "white")){
+            for(var i of tetrominoes){
+                i.drawBlock();
+                gameBoardSquared[i.x][i.y] = i;
+            }
+            return true;
+        }
+        else if(tetrominoes.some(k => k.y > playableGameBoardLength-1)){
+            for(var i of tetrominoes){
+                i.drawBlock();
+                gameBoardSquared[i.x][i.y] = i;
+            }
+            return true;
+        }
     }
+    return false;
 }
 
 function clearRow(){
