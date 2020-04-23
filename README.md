@@ -7,7 +7,7 @@ Temporary controlls:
 - Enter: start the game
 - left arrow: move left
 - right arrow: move right
-- up arrow: rotate
+- y key: rotate
 - down arrow: move one row down
 
 Known bugs:
