@@ -18,7 +18,7 @@ let isCollision = false;
 
 for (let i = 0; i < clickButtons.length; i++){
     clickButtons[i].addEventListener("click", function(){
-        let buttonClickedOn = this.innerText;
+        let buttonClickedOn;
         startGame(buttonClickedOn);
     });
 }
