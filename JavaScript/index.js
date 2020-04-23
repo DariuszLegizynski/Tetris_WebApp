@@ -18,7 +18,6 @@ let isCollision = false;
 
 for (let i = 0; i < clickButtons.length; i++){
     clickButtons[i].addEventListener("click", function(){
-        let buttonClickedOn = this.innerText;
         startGame(buttonClickedOn);
     });
 }
@@ -55,8 +54,7 @@ function updateGameBoard(){
 function startGame(key){
 
     if (key === "Enter"){
-        drawSquaredGameBoard();
-        makeNewRandomTetromino();
+        startGame();
     }
 
     else if (key==="ArrowLeft"){
@@ -77,6 +75,11 @@ function startGame(key){
     
     else
         console.log("Psst, press 'Enter' to start");
+}
+
+function startGame(){
+    drawSquaredGameBoard();
+    makeNewRandomTetromino();
 }
 
 class SimpleBlock{

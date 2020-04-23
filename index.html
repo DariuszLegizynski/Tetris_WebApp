@@ -33,15 +33,15 @@
                     </div>
                     <div class="controllButtons">
                         <div class="row justify-content-around">
-                            <button type="button" class="btn click-button btn-outline-secondary">Enter</button>
+                            <button type="button" id="start-button" class="btn click-button btn-outline-secondary" onclick="startGame()">Start</button>
                         </div>
                         <div class="row justify-content-around">
-                            <button type="button" class="btn click-button btn-outline-secondary">ArrowLeft</button>
-                            <button type="button" class="btn click-button btn-outline-secondary">y</button>
-                            <button type="button" class="btn click-button btn-outline-secondary">ArrowRight</button>
+                            <button type="button" id="left-button" class="btn click-button btn-outline-secondary" onclick="moveTetrominoesLeft()">Left</button>
+                            <button type="button" id="rotate-button" class="btn click-button btn-outline-secondary" onclick="rotateTetromino()">Rotate</button>
+                            <button type="button" id="right-button" class="btn click-button btn-outline-secondary" onclick="moveTetrominoesRight()">Right</button>
                         </div>
                         <div class="row justify-content-around">
-                            <button type="button" class="btn click-button btn-outline-secondary">ArrowDown</button>
+                            <button type="button" id="down-button" class="btn click-button btn-outline-secondary" onclick="updateGameBoard();">Push Down</button>
                         </div>
                     </div>
                     <div class="row justify-content-around gameScreen">
