@@ -61,7 +61,7 @@ function startGame(key){
         moveTetrominoesLeft();
     }
 
-    else if (key==="y"){
+    else if (key==="q"){
         rotateTetromino();
     }
 
