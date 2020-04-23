@@ -28,7 +28,7 @@ document.addEventListener("keydown", function(event){
 
 const myInterval = setInterval(updateGameBoard, ms);  //1000/ms(=20) = 50 fps
 
-alert("Instructions\nEnter: Start game\nLeft Arrow: move left\nRight Arrow: move right\nDown Arrow: Push down\nZ: Rotate");
+alert("Instructions\nEnter: Start game\nLeft Arrow: move left\nRight Arrow: move right\nDown Arrow: Push down\nQ: Rotate");
 
 function updateGameBoard(){
     if(!gameOver){
@@ -435,8 +435,6 @@ function clearRow(){
         gameScore += 100;
         const gameScoreElement = document.getElementById("score");
         gameScoreElement.innerHTML = "SCORE: " + gameScore;
-        console.log("clearRow(): ");
-        console.log(gameBoardSquared);
         }
     }
 }
