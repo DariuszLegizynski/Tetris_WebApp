@@ -18,6 +18,7 @@ let isCollision = false;
 
 for (let i = 0; i < clickButtons.length; i++){
     clickButtons[i].addEventListener("click", function(){
+        let buttonClickedOn = this.innerText;
         startGame(buttonClickedOn);
     });
 }
@@ -54,7 +55,8 @@ function updateGameBoard(){
 function startGame(key){
 
     if (key === "Enter"){
-        startGame();
+        drawSquaredGameBoard();
+        makeNewRandomTetromino();
     }
 
     else if (key==="ArrowLeft"){
@@ -77,7 +79,7 @@ function startGame(key){
         console.log("Psst, press 'Enter' to start");
 }
 
-function startGame(){
+function startGameButton(){
     drawSquaredGameBoard();
     makeNewRandomTetromino();
 }
